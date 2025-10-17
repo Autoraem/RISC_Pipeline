@@ -18,7 +18,7 @@ module tb_counter;
     // Test sequence
     initial begin
         // Create VCD file for GTKWave
-        $dumpfile("wave.vcd");
+        $dumpfile("sim/waves/wave.vcd");
         $dumpvars(0, tb_counter);
 
         // Initialize

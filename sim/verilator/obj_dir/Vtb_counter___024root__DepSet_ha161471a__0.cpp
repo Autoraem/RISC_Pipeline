@@ -116,7 +116,7 @@ void Vtb_counter___024root___eval(Vtb_counter___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vtb_counter___024root___dump_triggers__nba(vlSelf);
 #endif
-            VL_FATAL_MT("tb_counter.sv", 2, "", "NBA region did not converge.");
+            VL_FATAL_MT("rtl/tb_counter.sv", 2, "", "NBA region did not converge.");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         __VnbaContinue = 0U;
@@ -127,7 +127,7 @@ void Vtb_counter___024root___eval(Vtb_counter___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vtb_counter___024root___dump_triggers__act(vlSelf);
 #endif
-                VL_FATAL_MT("tb_counter.sv", 2, "", "Active region did not converge.");
+                VL_FATAL_MT("rtl/tb_counter.sv", 2, "", "Active region did not converge.");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

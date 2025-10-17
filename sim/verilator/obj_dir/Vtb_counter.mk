@@ -42,13 +42,14 @@ VM_USER_CFLAGS = \
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
   -lz \
+  -lz \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
-  .. \
+  ../../.. \
 
 ### Default rules...
 # Include list of all generated classes

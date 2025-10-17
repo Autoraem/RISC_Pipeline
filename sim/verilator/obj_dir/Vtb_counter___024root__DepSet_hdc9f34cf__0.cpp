@@ -11,17 +11,17 @@ VlCoroutine Vtb_counter___024root___eval_initial__TOP__Vtiming__0(Vtb_counter___
     Vtb_counter__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSymsp->_vm_contextp__->dumpfile("wave.vcd"s);
+    vlSymsp->_vm_contextp__->dumpfile("sim/waves/wave.vcd"s);
     vlSymsp->_traceDumpOpen();
     vlSelfRef.tb_counter__DOT__reset = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x000000000000000aULL, 
-                                         nullptr, "tb_counter.sv", 
+                                         nullptr, "rtl/tb_counter.sv", 
                                          26);
     vlSelfRef.tb_counter__DOT__reset = 0U;
     co_await vlSelfRef.__VdlySched.delay(0x00000000000003e8ULL, 
-                                         nullptr, "tb_counter.sv", 
+                                         nullptr, "rtl/tb_counter.sv", 
                                          30);
-    VL_FINISH_MT("tb_counter.sv", 33, "");
+    VL_FINISH_MT("rtl/tb_counter.sv", 33, "");
 }
 
 VlCoroutine Vtb_counter___024root___eval_initial__TOP__Vtiming__1(Vtb_counter___024root* vlSelf) {
@@ -32,7 +32,7 @@ VlCoroutine Vtb_counter___024root___eval_initial__TOP__Vtiming__1(Vtb_counter___
     while (VL_LIKELY(!vlSymsp->_vm_contextp__->gotFinish())) {
         co_await vlSelfRef.__VdlySched.delay(5ULL, 
                                              nullptr, 
-                                             "tb_counter.sv", 
+                                             "rtl/tb_counter.sv", 
                                              16);
         vlSelfRef.tb_counter__DOT__clk = (1U & (~ (IData)(vlSelfRef.tb_counter__DOT__clk)));
     }
