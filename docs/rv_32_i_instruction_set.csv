@@ -1,0 +1,41 @@
+Mnemonic,Type,funct7,funct3,Opcode,Description
+LUI,U-type,, ,0110111,Load Upper Immediate
+AUIPC,U-type,, ,0010111,Add Upper Immediate to PC
+JAL,J-type,, ,1101111,Jump and Link
+JALR,I-type,,000,1100111,Jump and Link Register
+BEQ,B-type,,000,1100011,Branch if Equal
+BNE,B-type,,001,1100011,Branch if Not Equal
+BLT,B-type,,100,1100011,Branch if Less Than (signed)
+BGE,B-type,,101,1100011,Branch if Greater or Equal (signed)
+BLTU,B-type,,110,1100011,Branch if Less Than (unsigned)
+BGEU,B-type,,111,1100011,Branch if Greater or Equal (unsigned)
+LB,I-type,,000,0000011,Load Byte
+LH,I-type,,001,0000011,Load Halfword
+LW,I-type,,010,0000011,Load Word
+LBU,I-type,,100,0000011,Load Byte Unsigned
+LHU,I-type,,101,0000011,Load Halfword Unsigned
+SB,S-type,,000,0100011,Store Byte
+SH,S-type,,001,0100011,Store Halfword
+SW,S-type,,010,0100011,Store Word
+ADDI,I-type,,000,0010011,Add Immediate
+SLTI,I-type,,010,0010011,Set Less Than Immediate (signed)
+SLTIU,I-type,,011,0010011,Set Less Than Immediate (unsigned)
+XORI,I-type,,100,0010011,Bitwise XOR Immediate
+ORI,I-type,,110,0010011,Bitwise OR Immediate
+ANDI,I-type,,111,0010011,Bitwise AND Immediate
+SLLI,I-type,0000000,001,0010011,Shift Left Logical Immediate
+SRLI,I-type,0000000,101,0010011,Shift Right Logical Immediate
+SRAI,I-type,0100000,101,0010011,Shift Right Arithmetic Immediate
+ADD,R-type,0000000,000,0110011,Integer Add
+SUB,R-type,0100000,000,0110011,Integer Subtract
+SLL,R-type,0000000,001,0110011,Shift Left Logical
+SLT,R-type,0000000,010,0110011,Set Less Than (signed)
+SLTU,R-type,0000000,011,0110011,Set Less Than (unsigned)
+XOR,R-type,0000000,100,0110011,Bitwise XOR
+SRL,R-type,0000000,101,0110011,Shift Right Logical
+SRA,R-type,0100000,101,0110011,Shift Right Arithmetic
+OR,R-type,0000000,110,0110011,Bitwise OR
+AND,R-type,0000000,111,0110011,Bitwise AND
+FENCE,I-type,,000,0001111,Memory Fence
+ECALL,I-type,000000000000,000,1110011,Environment Call
+EBREAK,I-type,000000000001,000,1110011,Environment Breakpoint
