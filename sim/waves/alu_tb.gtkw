@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed Oct 22 07:50:19 2025
+[*]
+[dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/wave.vcd"
+[dumpfile_mtime] "Wed Oct 22 07:48:07 2025"
+[dumpfile_size] 773
+[savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/alu_tb.gtkw"
+[timestart] 0
+[size] 2042 990
+[pos] -1 -1
+*-3.254262 70 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] alu_tb.
+[sst_width] 297
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 294
+@420
+alu_tb.dut.A[31:0]
+@421
+alu_tb.dut.B[31:0]
+@24
+alu_tb.dut.Neg
+alu_tb.dut.Opcode[3:0]
+alu_tb.dut.Overflow
+@420
+alu_tb.dut.Q[31:0]
+@24
+alu_tb.dut.Zero
+alu_tb.dut.shamt[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

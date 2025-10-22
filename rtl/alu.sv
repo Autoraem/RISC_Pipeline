@@ -20,9 +20,9 @@ always_comb begin
         4'd2: Q = A & B; //AND
         4'd3: Q = A | B; //OR
         4'd4: Q = A ^ B; //XOR
-        4'd5: Q = A << shamt; //SLL 
-        4'd6: Q = A >> shamt; //SRL 
-        4'd7: Q = A >>> shamt; //SRA 
+        4'd5: Q = A << shamt; //SLL
+        4'd6: Q = A >> shamt; //SRL
+        4'd7: Q = $signed(A) >>> shamt; //SRA
         4'd8: Q = ($signed(A) < $signed(B)) ? 1 : 0; //SLT
         4'd9: Q = ($unsigned(A) < $unsigned(B)) ? 1 : 0; //SLTU
         default: Q = 32'b0;
@@ -34,4 +34,4 @@ always_comb begin
 end
 
 
-endmodule alu();
+endmodule;

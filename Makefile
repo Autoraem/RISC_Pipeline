@@ -3,11 +3,11 @@
 # Filelist
 VERILATOR_F = sim/verilator/verilator.f
 # Testbench
-TESTBENCH = rtl/test.sv
+TESTBENCH = rtl/alu.sv
 # Output directory for generated files
 OBJ_DIR = sim/verilator/obj_dir
 # Top module
-TOP_MODULE ?= tb_counter
+TOP_MODULE ?= alu_tb
 TARGET = V$(TOP_MODULE)
 # Waveform folder
 WAVE_DIR = sim/waves
@@ -37,4 +37,4 @@ wave : sim
 all : wave
 # Clean everything
 clean:
-	rm -rf $(OBJ_DIR) $(WAVE_DIR) *.vcd *.log
+	rm -rf $(OBJ_DIR) *.vcd *.log
