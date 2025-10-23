@@ -17,10 +17,10 @@
 --x-initial unique
 
 //Top Module
-rtl/alu_tb.sv
+rtl/testbenches/regfile_tb.sv
 
 //Testbench
---binary rtl/alu.sv
+--binary rtl/regfile.sv
 
---top alu_tb
+--top regfile_tb
 

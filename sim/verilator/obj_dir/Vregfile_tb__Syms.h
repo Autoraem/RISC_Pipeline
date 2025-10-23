@@ -4,24 +4,24 @@
 // Internal details; most calling programs do not need this header,
 // unless using verilator public meta comments.
 
-#ifndef VERILATED_VALU_TB__SYMS_H_
-#define VERILATED_VALU_TB__SYMS_H_  // guard
+#ifndef VERILATED_VREGFILE_TB__SYMS_H_
+#define VERILATED_VREGFILE_TB__SYMS_H_  // guard
 
 #include "verilated.h"
 #include "verilated_fst_c.h"
 
 // INCLUDE MODEL CLASS
 
-#include "Valu_tb.h"
+#include "Vregfile_tb.h"
 
 // INCLUDE MODULE CLASSES
-#include "Valu_tb___024root.h"
+#include "Vregfile_tb___024root.h"
 
 // SYMS CLASS (contains all model state)
-class alignas(VL_CACHE_LINE_BYTES) Valu_tb__Syms final : public VerilatedSyms {
+class alignas(VL_CACHE_LINE_BYTES) Vregfile_tb__Syms final : public VerilatedSyms {
   public:
     // INTERNAL STATE
-    Valu_tb* const __Vm_modelp;
+    Vregfile_tb* const __Vm_modelp;
     bool __Vm_dumping = false;  // Dumping is active
     VerilatedMutex __Vm_dumperMutex;  // Protect __Vm_dumperp
     VerilatedFstC* __Vm_dumperp VL_GUARDED_BY(__Vm_dumperMutex) = nullptr;  /// Trace class for $dump*
@@ -31,11 +31,11 @@ class alignas(VL_CACHE_LINE_BYTES) Valu_tb__Syms final : public VerilatedSyms {
     bool __Vm_didInit = false;
 
     // MODULE INSTANCE STATE
-    Valu_tb___024root              TOP;
+    Vregfile_tb___024root          TOP;
 
     // CONSTRUCTORS
-    Valu_tb__Syms(VerilatedContext* contextp, const char* namep, Valu_tb* modelp);
-    ~Valu_tb__Syms();
+    Vregfile_tb__Syms(VerilatedContext* contextp, const char* namep, Vregfile_tb* modelp);
+    ~Vregfile_tb__Syms();
 
     // METHODS
     const char* name() { return TOP.name(); }

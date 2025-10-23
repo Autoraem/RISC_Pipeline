@@ -1,0 +1,67 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Thu Oct 23 03:10:56 2025
+[*]
+[dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/regfile_tb_wave.vcd"
+[dumpfile_mtime] "Thu Oct 23 03:10:34 2025"
+[dumpfile_size] 1006
+[savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/regfile_tb.gtkw"
+[timestart] 11
+[size] 1920 985
+[pos] -1 -1
+*-2.894694 55 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] regfile_tb.
+[sst_width] 297
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+regfile_tb.dut.clk
+regfile_tb.dut.we
+@22
+regfile_tb.dut.rd[4:0]
+regfile_tb.dut.wd[31:0]
+regfile_tb.dut.rs1[4:0]
+@23
+regfile_tb.dut.rs2[4:0]
+@22
+regfile_tb.dut.rd1[31:0]
+regfile_tb.dut.rd2[31:0]
+regfile_tb.dut.regfile[0][31:0]
+regfile_tb.dut.regfile[1][31:0]
+regfile_tb.dut.regfile[2][31:0]
+regfile_tb.dut.regfile[3][31:0]
+regfile_tb.dut.regfile[4][31:0]
+regfile_tb.dut.regfile[5][31:0]
+regfile_tb.dut.regfile[6][31:0]
+regfile_tb.dut.regfile[7][31:0]
+regfile_tb.dut.regfile[8][31:0]
+regfile_tb.dut.regfile[9][31:0]
+regfile_tb.dut.regfile[10][31:0]
+regfile_tb.dut.regfile[11][31:0]
+regfile_tb.dut.regfile[12][31:0]
+regfile_tb.dut.regfile[13][31:0]
+regfile_tb.dut.regfile[14][31:0]
+regfile_tb.dut.regfile[15][31:0]
+regfile_tb.dut.regfile[16][31:0]
+regfile_tb.dut.regfile[17][31:0]
+regfile_tb.dut.regfile[18][31:0]
+regfile_tb.dut.regfile[19][31:0]
+regfile_tb.dut.regfile[20][31:0]
+regfile_tb.dut.regfile[21][31:0]
+regfile_tb.dut.regfile[22][31:0]
+regfile_tb.dut.regfile[23][31:0]
+regfile_tb.dut.regfile[24][31:0]
+regfile_tb.dut.regfile[25][31:0]
+regfile_tb.dut.regfile[26][31:0]
+regfile_tb.dut.regfile[27][31:0]
+regfile_tb.dut.regfile[28][31:0]
+regfile_tb.dut.regfile[29][31:0]
+regfile_tb.dut.regfile[30][31:0]
+regfile_tb.dut.regfile[31][31:0]
+@28
+regfile_tb.dut.rst
+@420
+regfile_tb.dut.unnamedblk1.i
+[pattern_trace] 1
+[pattern_trace] 0

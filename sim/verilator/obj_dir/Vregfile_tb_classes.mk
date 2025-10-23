@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See Valu_tb.mk for the caller.
+# See Vregfile_tb.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -25,26 +25,25 @@ VM_TRACE_VCD = 0
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-  Valu_tb \
-  Valu_tb___024root__DepSet_h4cc5cbec__0 \
-  Valu_tb___024root__DepSet_h0ecdb284__0 \
-  Valu_tb__main \
+  Vregfile_tb \
+  Vregfile_tb___024root__DepSet_hdf71e188__0 \
+  Vregfile_tb___024root__DepSet_h63798f42__0 \
+  Vregfile_tb__main \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-  Valu_tb___024root__Slow \
-  Valu_tb___024root__DepSet_h4cc5cbec__0__Slow \
-  Valu_tb___024root__DepSet_h0ecdb284__0__Slow \
+  Vregfile_tb___024root__Slow \
+  Vregfile_tb___024root__DepSet_h63798f42__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-  Valu_tb__Trace__0 \
+  Vregfile_tb__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Valu_tb__Syms \
-  Valu_tb__Trace__0__Slow \
-  Valu_tb__TraceDecls__0__Slow \
+  Vregfile_tb__Syms \
+  Vregfile_tb__Trace__0__Slow \
+  Vregfile_tb__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

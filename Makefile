@@ -3,11 +3,11 @@
 # Filelist
 VERILATOR_F = sim/verilator/verilator.f
 # Testbench
-TESTBENCH = rtl/alu.sv
+TESTBENCH = rtl/regfile.sv
 # Output directory for generated files
 OBJ_DIR = sim/verilator/obj_dir
 # Top module
-TOP_MODULE ?= alu_tb
+TOP_MODULE ?= regfile_tb
 TARGET = V$(TOP_MODULE)
 # Waveform folder
 WAVE_DIR = sim/waves
@@ -32,7 +32,7 @@ sim: compile
 
 wave : sim 
 	# Open waveform in GTKWave
-	gtkwave $(WAVE_DIR)/wave.vcd $(WAVE_DIR)/$(TOP_MODULE).gtkw
+	gtkwave $(WAVE_DIR)/$(TOP_MODULE)_wave.vcd $(WAVE_DIR)/$(TOP_MODULE).gtkw
 	
 all : wave
 # Clean everything
