@@ -1,0 +1,45 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Fri Nov 21 03:24:47 2025
+[*]
+[dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/controldecoder_tb_wave.vcd"
+[dumpfile_mtime] "Fri Nov 21 03:17:49 2025"
+[dumpfile_size] 1086
+[savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/controldecoder_tb.gtkw"
+[timestart] 0
+[size] 1920 985
+[pos] -27 -24
+*-9.214467 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] controldecoder_tb.
+[treeopen] controldecoder_tb.dut.
+[sst_width] 297
+[signals_width] 248
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@100000028
+controldecoder_tb.dut.A_sel[1:0]
+controldecoder_tb.dut.B_sel[1:0]
+controldecoder_tb.dut.alu_op[3:0]
+controldecoder_tb.dut.control_signals.A_sel[1:0]
+controldecoder_tb.dut.control_signals.B_sel[1:0]
+controldecoder_tb.dut.control_signals.alu_op[3:0]
+controldecoder_tb.dut.control_signals.imm_sel[2:0]
+@22
+controldecoder_tb.dut.control_signals.rd[4:0]
+@28
+controldecoder_tb.dut.control_signals.regwen
+@22
+controldecoder_tb.dut.control_signals.rs1[4:0]
+controldecoder_tb.dut.control_signals.rs2[4:0]
+@100000028
+controldecoder_tb.dut.imm_sel[2:0]
+@22
+controldecoder_tb.dut.instr[31:0]
+controldecoder_tb.dut.rd[4:0]
+@28
+controldecoder_tb.dut.regwen
+@22
+controldecoder_tb.dut.rs1[4:0]
+controldecoder_tb.dut.rs2[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

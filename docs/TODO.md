@@ -2,7 +2,7 @@
 # General Flow:
 1. ALU ✅
     1.1 Multiply/Divide Unit
-2. RF
+2. RF✅
 3. Control Logic
 4. Immediate Generator
 5. PC
@@ -16,3 +16,4 @@
 # Other Things
 Atomic Instructions?
 Fence, Ecall, EBREAK, Traps, Interrupts?
+U-boot (Perhaps run this) 

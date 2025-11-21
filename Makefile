@@ -3,11 +3,11 @@
 # Filelist
 VERILATOR_F = sim/verilator/verilator.f
 # Testbench
-TESTBENCH = rtl/regfile.sv
+TESTBENCH = rtl/control.sv
 # Output directory for generated files
 OBJ_DIR = sim/verilator/obj_dir
 # Top module
-TOP_MODULE ?= regfile_tb
+TOP_MODULE ?= controldecoder_tb
 TARGET = V$(TOP_MODULE)
 # Waveform folder
 WAVE_DIR = sim/waves

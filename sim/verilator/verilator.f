@@ -17,10 +17,12 @@
 --x-initial unique
 
 //Top Module
-rtl/testbenches/regfile_tb.sv
+rtl/control_pkg.sv
+rtl/testbenches/controldecoder_tb.sv
+// rtl/control.sv
 
 //Testbench
---binary rtl/regfile.sv
+--binary rtl/control.sv
 
---top regfile_tb
+--top controldecoder_tb
 

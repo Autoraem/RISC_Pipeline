@@ -7,6 +7,8 @@ module regfile_tb;
     logic  [31:0] wd;
     logic [31:0] rd1, rd2;
 
+
+
     regfile dut (
         .clk(clk),
         .we(we),
