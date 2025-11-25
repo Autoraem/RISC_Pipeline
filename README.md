@@ -7,8 +7,11 @@ and creating a binary of the instructions/data that I need
 
 # How to run and update verilator.f/Makefile
 Requires oss-cad-suite to be downloaded
+
 Add to PATH
 
 Update Verilator.f file as well as the Makefile
+
 Add all dependecies to verilator.f
+
 Packages first!

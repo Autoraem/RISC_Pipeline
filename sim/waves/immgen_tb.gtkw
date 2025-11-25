@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sat Nov 22 03:55:41 2025
+[*]
+[dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/immgen_tb_wave.vcd"
+[dumpfile_mtime] "Sat Nov 22 03:55:03 2025"
+[dumpfile_size] 2775361
+[savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/immgen_tb.gtkw"
+[timestart] 124970286
+[size] 1920 985
+[pos] -27 -24
+*-9.028468 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] immgen_tb.
+[sst_width] 297
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@23
+immgen_tb.dut.imm_out[31:0]
+@100000029
+immgen_tb.dut.imm_sel[2:0]
+@23
+immgen_tb.dut.instr[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

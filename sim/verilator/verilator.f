@@ -17,12 +17,11 @@
 --x-initial unique
 
 //Top Module
-rtl/control_pkg.sv
-rtl/testbenches/controldecoder_tb.sv
-// rtl/control.sv
+rtl/imm_types_pkg.sv
+rtl/immgen.sv
+rtl/testbenches/immgen_tb.sv
 
 //Testbench
---binary rtl/control.sv
+--binary rtl/immgen.sv
 
---top controldecoder_tb
-
+--top immgen_tb
