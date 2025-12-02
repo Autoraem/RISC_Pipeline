@@ -1,9 +1,5 @@
 `timescale 1ns/1ps
-import immtypes_pkg::*;
-
 module immgen_tb;
-
-
     // DUT inputs/outputs
     logic [31:0] instr;
     imm_sel_e    imm_sel;
@@ -15,7 +11,7 @@ module immgen_tb;
         .imm_sel(imm_sel),
         .imm_out(imm_out)
     );
-
+    import control_pkg::imm_sel_e;
     // ============================================================
     // Reference Model: pure SystemVerilog functions
     // ============================================================

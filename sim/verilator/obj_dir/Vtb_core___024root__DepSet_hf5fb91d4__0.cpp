@@ -19,25 +19,34 @@ VlCoroutine Vtb_core___024root___eval_initial__TOP__Vtiming__0(Vtb_core___024roo
     vlSymsp->_vm_contextp__->dumpfile("sim/waves/tb_core_wave.vcd"s);
     vlSymsp->_traceDumpOpen();
     vlSelfRef.tb_core__DOT__clk = 0U;
-    tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 = 5U;
+    vlSelfRef.tb_core__DOT__rst = 1U;
+    co_await vlSelfRef.__VdlySched.delay(0x0000000000004e20ULL, 
+                                         nullptr, "rtl/testbenches/tb_core.sv", 
+                                         26);
+    vlSelfRef.tb_core__DOT__rst = 0U;
+    tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 = 0x00000032U;
     while (VL_LTS_III(32, 0U, tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0)) {
         co_await vlSelfRef.__VtrigSched_h78f94584__0.trigger(0U, 
                                                              nullptr, 
                                                              "@(posedge tb_core.clk)", 
                                                              "rtl/testbenches/tb_core.sv", 
-                                                             28);
+                                                             29);
         tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 
             = (tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 
                - (IData)(1U));
     }
+    vlSelfRef.tb_core__DOT__rst = 1U;
+    co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
+                                         nullptr, "rtl/testbenches/tb_core.sv", 
+                                         31);
     vlSelfRef.tb_core__DOT__rst = 0U;
-    tb_core__DOT__unnamedblk1_2__DOT____Vrepeat1 = 0x000000c8U;
+    tb_core__DOT__unnamedblk1_2__DOT____Vrepeat1 = 0x00000032U;
     while (VL_LTS_III(32, 0U, tb_core__DOT__unnamedblk1_2__DOT____Vrepeat1)) {
         co_await vlSelfRef.__VtrigSched_h78f94584__0.trigger(0U, 
                                                              nullptr, 
                                                              "@(posedge tb_core.clk)", 
                                                              "rtl/testbenches/tb_core.sv", 
-                                                             32);
+                                                             33);
         tb_core__DOT__unnamedblk1_2__DOT____Vrepeat1 
             = (tb_core__DOT__unnamedblk1_2__DOT____Vrepeat1 
                - (IData)(1U));

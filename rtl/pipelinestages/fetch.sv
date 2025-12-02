@@ -6,7 +6,6 @@ module fetch #(
     input  logic        clk,
     input  logic        rst,
 
-    // input  logic [31:0] pc_next, // Input PC next value
     input  logic        pc_sel,   // PC select signal
     input  logic [31:0] branch_target, // Branch target address
 

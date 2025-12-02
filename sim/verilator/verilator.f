@@ -18,9 +18,7 @@
 
 //Top Module
 rtl/types/control_pkg.sv
-rtl/types/immtypes_pkg.sv
-rtl/types/alu_pkg.sv
-rtl/types/IFID_pkg.sv
+rtl/types/pipelinestages_pkg.sv
 
 rtl/units/imem.sv
 rtl/units/dmem.sv
@@ -31,8 +29,10 @@ rtl/units/control.sv
 rtl/units/pcreg.sv
 rtl/riscv_core_min.sv
 rtl/units/pipereg.sv
+rtl/units/brcmp.sv
 
 rtl/pipelinestages/fetch.sv
+rtl/pipelinestages/decode.sv
 
 rtl/testbenches/tb_core.sv
 //Testbench

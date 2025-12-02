@@ -1,17 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Tue Dec  2 22:13:12 2025
+[*] Tue Dec  2 23:40:52 2025
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Tue Dec  2 22:12:46 2025"
-[dumpfile_size] 4663
+[dumpfile_mtime] "Tue Dec  2 23:39:59 2025"
+[dumpfile_size] 2946
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
 [timestart] 0
 [size] 2115 975
 [pos] -1 -1
-*-14.700001 189800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-16.200001 515000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
+[treeopen] tb_core.dut.control_inst.
 [treeopen] tb_core.dut.fetch_inst.
 [treeopen] tb_core.dut.ifid_reg.
 [sst_width] 297
@@ -20,22 +21,50 @@
 [sst_vpaned_height] 289
 @100000028
 tb_core.clk
+@29
+tb_core.rst
 @24
 [color] 1
 tb_core.dut.pc[31:0]
-tb_core.dut.pc_next[31:0]
-tb_core.dut.ifid_reg.d.pc[31:0]
 tb_core.dut.ifid_reg.d.instr[31:0]
-tb_core.dut.ifid_reg.q.pc[31:0]
-tb_core.dut.ifid_reg.q.instr[31:0]
-@25
-tb_core.dut.pctemp[31:0]
-@24
-tb_core.dut.instrtemp[31:0]
-@22
-tb_core.dut.fetch_inst.pc[31:0]
-tb_core.dut.fetch_inst.pc[31:0]
 @28
 tb_core.dut.fetch_inst.pc_sel
+@24
+[color] 3
+tb_core.dut.ifid_reg.q.instr[31:0]
+[color] 3
+tb_core.dut.ifid_reg.q.pc[31:0]
+[color] 3
+tb_core.dut.ifid_reg.q.valid
+@100000028
+[color] 2
+tb_core.dut.ctrl.A_sel[1:0]
+[color] 2
+tb_core.dut.ctrl.B_sel[1:0]
+[color] 2
+tb_core.dut.ctrl.alu_op[3:0]
+[color] 2
+tb_core.dut.ctrl.imm_sel[2:0]
+@22
+[color] 2
+tb_core.dut.ctrl.rd[4:0]
+@28
+[color] 2
+tb_core.dut.ctrl.regwen
+@22
+[color] 2
+tb_core.dut.ctrl.rs1[4:0]
+[color] 2
+tb_core.dut.ctrl.rs2[4:0]
+[color] 7
+tb_core.dut.D_rs1[31:0]
+[color] 7
+tb_core.dut.D_rs2[31:0]
+@24
+[color] 7
+tb_core.dut.D_imm[31:0]
+@28
+[color] 7
+tb_core.dut.branch_taken
 [pattern_trace] 1
 [pattern_trace] 0

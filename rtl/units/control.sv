@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module control (
     input  logic [31:0] instr,
     output control_signals_t control_signals
@@ -5,7 +6,7 @@ module control (
 
 import control_pkg::*;
 
-logic [4:0] rs1, rs2, rd;
+logic [4:0] rs1, rs2, rd; 
 alu_op_e     alu_op;
 logic        regwen;
 imm_sel_e    imm_sel;

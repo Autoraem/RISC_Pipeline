@@ -1,4 +1,4 @@
-module branch_cmp (
+module brcmp (
     input  logic [31:0] rs1,
     input  logic [31:0] rs2,
     input  logic [2:0]  funct3,  // from instruction[14:12]
@@ -15,6 +15,7 @@ module branch_cmp (
             3'b111: take_branch = (rs1 >= rs2);                   // BGEU
             default: take_branch = 1'b0;
         endcase
+
     end
 
 endmodule

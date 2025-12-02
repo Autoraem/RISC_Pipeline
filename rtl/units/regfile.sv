@@ -1,7 +1,7 @@
 module regfile(
     input logic         clk, //clock
-    input logic         we, //write enable
     input logic         rst, //reset
+    input logic         we, //write enable
     input logic  [4:0]  rs1, rs2, //read addresses
     input logic  [4:0]  rd, //write address
     input logic  [31:0] wd, //write data

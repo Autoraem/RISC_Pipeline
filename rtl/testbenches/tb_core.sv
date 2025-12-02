@@ -23,14 +23,14 @@ module tb_core;
         // Init
         clk   = 0;
         rst   = 1;
-
-        // Hold reset for a few cycles
-        repeat (5) @(posedge clk);
+        #20;
         rst   = 0;
-
         // Run simulation for some cycles
-        repeat (200) @(posedge clk);
-
+        repeat (50) @(posedge clk);
+        rst = 1;
+        #10;
+        rst = 0;    
+        repeat (50) @(posedge clk);
         // Finish
         $finish;
     end

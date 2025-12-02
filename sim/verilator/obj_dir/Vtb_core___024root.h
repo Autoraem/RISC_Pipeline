@@ -17,7 +17,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ tb_core__DOT__clk;
     CData/*0:0*/ tb_core__DOT__rst;
-    CData/*0:0*/ tb_core__DOT__dut__DOT__control_inst_instr;
+    CData/*0:0*/ tb_core__DOT__dut__DOT__branch_taken;
     CData/*3:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__alu_op;
     CData/*0:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__regwen;
     CData/*2:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__imm_sel;
@@ -27,12 +27,15 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     CData/*0:0*/ __Vtrigprevexpr___TOP__tb_core__DOT__clk__0;
     CData/*0:0*/ __VactContinue;
     IData/*31:0*/ tb_core__DOT__dut__DOT__pc;
-    IData/*31:0*/ tb_core__DOT__dut__DOT__pc_next;
     IData/*31:0*/ tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_next;
     IData/*31:0*/ tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__dout_r;
+    IData/*31:0*/ tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__rd1;
+    IData/*31:0*/ tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__rd2;
+    IData/*31:0*/ tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__unnamedblk1__DOT__i;
     IData/*31:0*/ __VactIterCount;
     VlWide<3>/*64:0*/ tb_core__DOT__dut__DOT____Vcellout__ifid_reg__q;
     VlUnpacked<IData/*31:0*/, 1024> tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__mem;
+    VlUnpacked<IData/*31:0*/, 32> tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
     VlTriggerScheduler __VtrigSched_h78f94584__0;

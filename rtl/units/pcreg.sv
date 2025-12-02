@@ -1,6 +1,7 @@
 `timescale 1ns/1ps
 module pcreg (
     input logic clk, rst,
+    
     input logic [31:0] branch_target,
     input logic pc_sel,
     output logic [31:0] pc
