@@ -17,11 +17,25 @@
 --x-initial unique
 
 //Top Module
-rtl/imm_types_pkg.sv
-rtl/immgen.sv
-rtl/testbenches/immgen_tb.sv
+rtl/types/control_pkg.sv
+rtl/types/immtypes_pkg.sv
+rtl/types/alu_pkg.sv
+rtl/types/IFID_pkg.sv
 
+rtl/units/imem.sv
+rtl/units/dmem.sv
+rtl/units/regfile.sv
+rtl/units/immgen.sv
+rtl/units/alu.sv
+rtl/units/control.sv
+rtl/units/pcreg.sv
+rtl/riscv_core_min.sv
+rtl/units/pipereg.sv
+
+rtl/pipelinestages/fetch.sv
+
+rtl/testbenches/tb_core.sv
 //Testbench
---binary rtl/immgen.sv
+--binary rtl/riscv_core_min.sv
 
---top immgen_tb
+--top tb_core

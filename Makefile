@@ -2,12 +2,12 @@
 
 # Filelist
 VERILATOR_F = sim/verilator/verilator.f
-# Testbench
-TESTBENCH = rtl/immgen.sv
+# # Testbench
+# TESTBENCH = rtl/riscv_core_min.sv
 # Output directory for generated files
 OBJ_DIR = sim/verilator/obj_dir
 # Top module
-TOP_MODULE ?= immgen_tb
+TOP_MODULE ?= tb_core
 TARGET = V$(TOP_MODULE)
 # Waveform folder
 WAVE_DIR = sim/waves
@@ -16,7 +16,8 @@ WAVE_DIR = sim/waves
 verilate:
 	# Ensure obj_dir exists
 	mkdir -p $(OBJ_DIR)
-	verilator -f $(VERILATOR_F) --cc $(TESTBENCH) --top $(TOP_MODULE) --Mdir $(OBJ_DIR) --trace-fst
+# 	verilator -f $(VERILATOR_F) --cc $(TESTBENCH) --top $(TOP_MODULE) --Mdir $(OBJ_DIR) --trace-fst
+	verilator -f $(VERILATOR_F) --top $(TOP_MODULE) --Mdir $(OBJ_DIR) --trace-fst
 
 compile : verilate
 	# Compile generated Makefile

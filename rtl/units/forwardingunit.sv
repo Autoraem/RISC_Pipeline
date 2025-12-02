@@ -9,7 +9,7 @@
 // Note: load-use hazards still require the hazard unit to insert a stall
 // when EX stage is a load that produces the needed data.
 
-module forwarding_unit (
+module forwardingunit (
     // IDs of source registers in EX stage (ID/EX pipeline register)
     input  logic [4:0] id_ex_rs1,
     input  logic [4:0] id_ex_rs2,

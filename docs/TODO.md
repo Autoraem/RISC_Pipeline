@@ -14,8 +14,17 @@
     8.1 Branches and Jumps
 9. Top Level
 10. Pipelining
-11. Hazard Detection
 11. Beyond
+
+12. Forward logic
+13. Hazard Detection
+14. Flush logic
+15. ALU Mapping 
+16. M Extension
+17. Pipeline stage structs
+18. Better Memory Modeling
+    18.1 IMEM/DMEM ready
+19. Prefetch fix...?
 # Other Things
 Atomic Instructions?
 Fence, Ecall, EBREAK, Traps, Interrupts?

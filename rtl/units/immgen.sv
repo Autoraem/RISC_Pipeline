@@ -1,11 +1,10 @@
-import imm_types::*;
-
+`timescale 1ns/1ps
 module immgen (
     input  logic [31:0] instr,
     input  imm_sel_e    imm_sel,
     output logic [31:0] imm_out
 );
-
+import immtypes_pkg::*;
 always_comb begin
     unique case (imm_sel)
         IMM_I: imm_out = {{20{instr[31]}}, instr[31:20]}; //sign-extend

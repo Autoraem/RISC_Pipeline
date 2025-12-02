@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-import imm_types::*;
+import immtypes_pkg::*;
 
 module immgen_tb;
 

@@ -1,4 +1,5 @@
-package imm_types;
+`timescale 1ns/1ps
+package immtypes_pkg;
 
     typedef enum logic [2:0] {
         IMM_I,

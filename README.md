@@ -7,6 +7,7 @@ and creating a binary of the instructions/data that I need
 
 # How to run and update verilator.f/Makefile
 Requires oss-cad-suite to be downloaded
+And GTKWave
 
 Add to PATH
 

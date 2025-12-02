@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Tue Dec  2 22:13:12 2025
+[*]
+[dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
+[dumpfile_mtime] "Tue Dec  2 22:12:46 2025"
+[dumpfile_size] 4663
+[savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
+[timestart] 0
+[size] 2115 975
+[pos] -1 -1
+*-14.700001 189800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_core.
+[treeopen] tb_core.dut.
+[treeopen] tb_core.dut.fetch_inst.
+[treeopen] tb_core.dut.ifid_reg.
+[sst_width] 297
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@100000028
+tb_core.clk
+@24
+[color] 1
+tb_core.dut.pc[31:0]
+tb_core.dut.pc_next[31:0]
+tb_core.dut.ifid_reg.d.pc[31:0]
+tb_core.dut.ifid_reg.d.instr[31:0]
+tb_core.dut.ifid_reg.q.pc[31:0]
+tb_core.dut.ifid_reg.q.instr[31:0]
+@25
+tb_core.dut.pctemp[31:0]
+@24
+tb_core.dut.instrtemp[31:0]
+@22
+tb_core.dut.fetch_inst.pc[31:0]
+tb_core.dut.fetch_inst.pc[31:0]
+@28
+tb_core.dut.fetch_inst.pc_sel
+[pattern_trace] 1
+[pattern_trace] 0
