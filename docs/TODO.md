@@ -19,12 +19,12 @@
 12. Forward logic
 13. Hazard Detection
 14. Flush logic
-15. ALU Mapping 
+15. ALU Mapping? 
 16. M Extension
-17. Pipeline stage structs
+17. Pipeline stage structs✅
 18. Better Memory Modeling
     18.1 IMEM/DMEM ready
-19. Prefetch fix...?
+19. Prefetch fix...?✅ (Deleted)
 # Other Things
 Atomic Instructions?
 Fence, Ecall, EBREAK, Traps, Interrupts?

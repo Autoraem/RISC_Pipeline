@@ -1,4 +1,4 @@
-module writeback (
+module wb (
     // From MEM/WB pipeline register
     input  logic [31:0] mem_data,       // loaded data from memory
     input  logic [31:0] alu_result,     // ALU result from EX/MEM
@@ -12,12 +12,12 @@ module writeback (
     output logic [31:0] wb_data,
     output logic        wb_regwen
 );
-
+    import control_pkg::*;
     always_comb begin
         unique case (wb_sel)
-            2'b00: wb_data = alu_result;  // ALU writes to register
-            2'b01: wb_data = mem_data;    // Load from memory
-            2'b10: wb_data = pc_plus_4;   // JAL/JALR write PC+4
+            WB_FROM_ALU         : wb_data = alu_result;  // ALU writes to register
+            WB_FROM_MEM         : wb_data = mem_data;    // Load from memory
+            WB_FROM_PC_PLUS_4   : wb_data = pc_plus_4;   // JAL/JALR write PC+4
             default: wb_data = 32'hDEADBEEF;
         endcase
     end

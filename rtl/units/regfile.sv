@@ -22,6 +22,7 @@ module regfile(
             regfile[rd] <= wd;
         end
     end
+    assign regfile[0] = 32'b0; // x0 is always zero
 
     assign rd1 = regfile[rs1];
     assign rd2 = regfile[rs2];

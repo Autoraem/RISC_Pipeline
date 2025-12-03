@@ -35,14 +35,31 @@ package control_pkg;
     typedef enum logic [1:0] {
         SRC_A_RS1,
         SRC_A_PC,
-        SRC_A_ZERO
+        SRC_A_ZERO 
     } a_sel_e;
 
     typedef enum logic [1:0] {
         SRC_B_RS2,
         SRC_B_IMM,
-        SRC_B_FOUR
+        SRC_B_FOUR 
     } b_sel_e;
+
+    // WB select
+    typedef enum logic [1:0] {
+        WB_FROM_ALU,
+        WB_FROM_MEM,
+        WB_FROM_PC_PLUS_4
+    } wb_sel_e;
+
+    // Branch type
+    typedef enum logic [2:0] {
+        BR_EQ,  
+        BR_NE,  
+        BR_LT,  
+        BR_GE,  
+        BR_LTU, 
+        BR_GEU 
+    } branch_type_e;
 
     // -------------------------
     // Control bundle

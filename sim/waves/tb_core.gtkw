@@ -1,31 +1,50 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Tue Dec  2 23:40:52 2025
+[*] Wed Dec  3 09:52:13 2025
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Tue Dec  2 23:39:59 2025"
-[dumpfile_size] 2946
+[dumpfile_mtime] "Wed Dec  3 09:51:49 2025"
+[dumpfile_size] 4821
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
 [timestart] 0
-[size] 2115 975
+[size] 2560 1345
 [pos] -1 -1
-*-16.200001 515000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.100000 81640 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
 [treeopen] tb_core.dut.control_inst.
+[treeopen] tb_core.dut.decode_inst.
+[treeopen] tb_core.dut.execute_inst.
 [treeopen] tb_core.dut.fetch_inst.
-[treeopen] tb_core.dut.ifid_reg.
+[treeopen] tb_core.dut.idex_reg.
+[treeopen] tb_core.dut.idex_reg.d.
 [sst_width] 297
-[signals_width] 174
+[signals_width] 331
 [sst_expanded] 1
-[sst_vpaned_height] 289
+[sst_vpaned_height] 419
 @100000028
 tb_core.clk
-@29
+@28
 tb_core.rst
-@24
+@22
 [color] 1
 tb_core.dut.pc[31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[0][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[1][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[2][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[3][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[4][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[5][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[6][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[7][31:0]
 tb_core.dut.ifid_reg.d.instr[31:0]
 @28
 tb_core.dut.fetch_inst.pc_sel
@@ -45,6 +64,10 @@ tb_core.dut.ctrl.B_sel[1:0]
 tb_core.dut.ctrl.alu_op[3:0]
 [color] 2
 tb_core.dut.ctrl.imm_sel[2:0]
+@22
+tb_core.dut.decode_inst.imm[31:0]
+@29
+tb_core.dut.decode_inst.brcmp_inst.funct3[2:0]
 @22
 [color] 2
 tb_core.dut.ctrl.rd[4:0]
@@ -66,5 +89,59 @@ tb_core.dut.D_imm[31:0]
 @28
 [color] 7
 tb_core.dut.branch_taken
+@22
+[color] 2
+tb_core.dut.E_alu_op[3:0]
+[color] 2
+tb_core.dut.E_alu_result[31:0]
+@28
+[color] 2
+tb_core.dut.E_alu_src
+@100000028
+tb_core.dut.control_inst.control_signals.B_sel[1:0]
+@28
+[color] 2
+tb_core.dut.E_br_taken
+[color] 2
+tb_core.dut.E_branch
+@22
+[color] 2
+tb_core.dut.E_imm[31:0]
+[color] 2
+tb_core.dut.E_pc[31:0]
+[color] 2
+tb_core.dut.E_rd[4:0]
+@28
+[color] 2
+tb_core.dut.E_reg_write
+[color] 2
+tb_core.dut.E_zero
+@22
+tb_core.dut.execute_inst.alu_inst.B[31:0]
+tb_core.dut.execute_inst.alu_inst.Q[31:0]
+@100000028
+tb_core.dut.execute_inst.A_sel[1:0]
+tb_core.dut.execute_inst.B_sel[1:0]
+@22
+tb_core.dut.execute_inst.alu_A[31:0]
+tb_core.dut.execute_inst.alu_B[31:0]
+@100000028
+tb_core.dut.execute_inst.alu_op[3:0]
+@22
+tb_core.dut.execute_inst.alu_result[31:0]
+@28
+[color] 6
+tb_core.dut.D_valid
+[color] 6
+tb_core.dut.E_valid
+[color] 6
+tb_core.dut.M_valid
+[color] 6
+tb_core.dut.W_valid
+@22
+tb_core.dut.wb_data[31:0]
+tb_core.dut.wb_rd[4:0]
+@28
+tb_core.dut.wb_regwen
 [pattern_trace] 1
 [pattern_trace] 0

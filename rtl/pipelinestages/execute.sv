@@ -1,6 +1,6 @@
 module execute (
     input  logic        clk,
-    input  logic        reset,
+    input  logic        rst,
 
     // From ID/EX pipeline register
     input  logic [31:0] rs1_data,
@@ -14,15 +14,15 @@ module execute (
 
     // Outputs to EX/MEM pipeline register
     output logic [31:0] alu_result,
-    // output logic        zero,
-    // output logic        neg,
-    // output logic        overflow,
+    output logic        zero,
+    output logic        neg,
+    output logic        overflow,
     output logic [31:0] sd,       // Store data (rs2)
     
     // To Prefetch / PC Select logic
     output logic        br_taken
 );
-
+    import control_pkg::*;
     // -----------------------
     // ALU operand muxing
     // -----------------------
@@ -30,16 +30,16 @@ module execute (
 
     always_comb begin
         unique case (A_sel)
-            A_RS1: alu_A = rs1_data;
-            A_PC:  alu_A = pc;
+            SRC_A_RS1: alu_A = rs1_data;
+            SRC_A_PC:  alu_A = pc; 
             default: alu_A = 32'hDEADBEEF;
         endcase
     end
 
     always_comb begin
         unique case (B_sel)
-            B_RS2: alu_B = rs2_data;
-            B_IMM: alu_B = imm;
+            SRC_B_RS2: alu_B = rs2_data;
+            SRC_B_IMM: alu_B = imm;
             default: alu_B = 32'hDEADBEEF;
         endcase
     end
@@ -50,11 +50,11 @@ module execute (
     alu alu_inst (
         .A(alu_A),
         .B(alu_B),
-        .alu_op(alu_op),
-        .result(alu_result),
-        .zero(zero),
-        .neg(neg),
-        .overflow(overflow)
+        .Opcode(alu_op),
+        .Q(alu_result),
+        .Zero(zero),
+        .Neg(neg),
+        .Overflow(overflow)
     );
     // -----------------------
     // Store data passthrough

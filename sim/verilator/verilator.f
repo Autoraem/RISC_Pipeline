@@ -33,6 +33,9 @@ rtl/units/brcmp.sv
 
 rtl/pipelinestages/fetch.sv
 rtl/pipelinestages/decode.sv
+rtl/pipelinestages/execute.sv
+rtl/pipelinestages/mem.sv
+rtl/pipelinestages/wb.sv
 
 rtl/testbenches/tb_core.sv
 //Testbench

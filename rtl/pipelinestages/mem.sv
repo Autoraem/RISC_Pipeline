@@ -1,6 +1,7 @@
+`timescale 1ns/1ps
 module mem (
     input  logic         clk,
-    input  logic         reset,
+    input  logic         rst,
 
     // From EX/MEM pipeline register
     input  logic [31:0]  alu_result,

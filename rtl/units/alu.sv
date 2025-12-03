@@ -8,7 +8,7 @@ module alu (
     output logic        Neg,
     output logic        Overflow
 );
-    import control_pkg::alu_op_e;
+    import control_pkg::*;
     logic [4:0] shamt;
 
     always_comb begin
