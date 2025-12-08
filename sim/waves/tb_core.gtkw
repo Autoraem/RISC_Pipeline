@@ -1,25 +1,28 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Dec  3 09:52:13 2025
+[*] Thu Dec  4 22:18:19 2025
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Wed Dec  3 09:51:49 2025"
-[dumpfile_size] 4821
+[dumpfile_mtime] "Thu Dec  4 12:31:24 2025"
+[dumpfile_size] 16393
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 0
+[timestart] 424700
 [size] 2560 1345
-[pos] -1 -1
-*-14.100000 81640 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -27 -24
+*-14.316232 528800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
-[treeopen] tb_core.dut.control_inst.
+[treeopen] tb_core.dut.control_inst.control_signals.
 [treeopen] tb_core.dut.decode_inst.
+[treeopen] tb_core.dut.decode_inst.ctrl_in.
 [treeopen] tb_core.dut.execute_inst.
+[treeopen] tb_core.dut.execute_inst.brcmp_inst.
 [treeopen] tb_core.dut.fetch_inst.
-[treeopen] tb_core.dut.idex_reg.
+[treeopen] tb_core.dut.forwardingunit_inst.
 [treeopen] tb_core.dut.idex_reg.d.
+[treeopen] tb_core.dut.idex_reg.q.
 [sst_width] 297
-[signals_width] 331
+[signals_width] 570
 [sst_expanded] 1
 [sst_vpaned_height] 419
 @100000028
@@ -29,6 +32,14 @@ tb_core.rst
 @22
 [color] 1
 tb_core.dut.pc[31:0]
+[color] 3
+tb_core.dut.ifid_reg.q.pc[31:0]
+[color] 3
+tb_core.dut.decode_inst.instr[31:0]
+tb_core.dut.execute_inst.pc[31:0]
+@20000
+-
+@22
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[0][31:0]
 [color] 1
@@ -45,103 +56,148 @@ tb_core.dut.decode_inst.regfile_inst.regfile[5][31:0]
 tb_core.dut.decode_inst.regfile_inst.regfile[6][31:0]
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[7][31:0]
-tb_core.dut.ifid_reg.d.instr[31:0]
+[color] 2
++{tb_core.dut.decode_inst.pc[31:0] INSTR START HERE} tb_core.dut.decode_inst.pc[31:0]
+@20000
+-
+@100000028
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.alu_op[3:0]
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.branch_type[2:0]
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.imm_sel[2:0]
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.instruction_type[6:0]
+@22
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.rd[4:0]
 @28
-tb_core.dut.fetch_inst.pc_sel
-@24
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.regwen
+@22
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.rs1[4:0]
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.rs2[4:0]
+[color] 1
+tb_core.dut.decode_inst.rs1[31:0]
+[color] 1
+tb_core.dut.decode_inst.rs2[31:0]
+@100000028
+[color] 1
+tb_core.dut.decode_inst.ctrl_in.wb_sel[1:0]
+@20000
+-
+@28
+[color] 6
+tb_core.dut.if_id_reg_q.valid
+[color] 6
+tb_core.dut.id_ex_reg_q.valid
+[color] 6
+tb_core.dut.ex_mem_reg_q.valid
+[color] 6
+tb_core.dut.mem_wb_reg_q.valid
+@20000
+-
+@22
 [color] 3
-tb_core.dut.ifid_reg.q.instr[31:0]
+tb_core.dut.fetch_inst.instr[31:0]
 [color] 3
-tb_core.dut.ifid_reg.q.pc[31:0]
-[color] 3
-tb_core.dut.ifid_reg.q.valid
+tb_core.dut.decode_inst.instr[31:0]
 @100000028
-[color] 2
-tb_core.dut.ctrl.A_sel[1:0]
-[color] 2
-tb_core.dut.ctrl.B_sel[1:0]
-[color] 2
-tb_core.dut.ctrl.alu_op[3:0]
-[color] 2
-tb_core.dut.ctrl.imm_sel[2:0]
-@22
-tb_core.dut.decode_inst.imm[31:0]
-@29
-tb_core.dut.decode_inst.brcmp_inst.funct3[2:0]
-@22
-[color] 2
-tb_core.dut.ctrl.rd[4:0]
-@28
-[color] 2
-tb_core.dut.ctrl.regwen
-@22
-[color] 2
-tb_core.dut.ctrl.rs1[4:0]
-[color] 2
-tb_core.dut.ctrl.rs2[4:0]
 [color] 7
-tb_core.dut.D_rs1[31:0]
-[color] 7
-tb_core.dut.D_rs2[31:0]
-@24
-[color] 7
-tb_core.dut.D_imm[31:0]
-@28
-[color] 7
-tb_core.dut.branch_taken
-@22
-[color] 2
-tb_core.dut.E_alu_op[3:0]
-[color] 2
-tb_core.dut.E_alu_result[31:0]
-@28
-[color] 2
-tb_core.dut.E_alu_src
-@100000028
-tb_core.dut.control_inst.control_signals.B_sel[1:0]
-@28
-[color] 2
-tb_core.dut.E_br_taken
-[color] 2
-tb_core.dut.E_branch
-@22
-[color] 2
-tb_core.dut.E_imm[31:0]
-[color] 2
-tb_core.dut.E_pc[31:0]
-[color] 2
-tb_core.dut.E_rd[4:0]
-@28
-[color] 2
-tb_core.dut.E_reg_write
-[color] 2
-tb_core.dut.E_zero
-@22
-tb_core.dut.execute_inst.alu_inst.B[31:0]
-tb_core.dut.execute_inst.alu_inst.Q[31:0]
-@100000028
-tb_core.dut.execute_inst.A_sel[1:0]
-tb_core.dut.execute_inst.B_sel[1:0]
-@22
-tb_core.dut.execute_inst.alu_A[31:0]
-tb_core.dut.execute_inst.alu_B[31:0]
-@100000028
 tb_core.dut.execute_inst.alu_op[3:0]
 @22
+tb_core.dut.id_ex_reg_q.rs1[31:0]
+tb_core.dut.id_ex_reg_q.rs2[31:0]
+tb_core.dut.execute_inst.alu_A[31:0]
+tb_core.dut.execute_inst.alu_B[31:0]
 tb_core.dut.execute_inst.alu_result[31:0]
+@20000
+-
 @28
-[color] 6
-tb_core.dut.D_valid
-[color] 6
-tb_core.dut.E_valid
-[color] 6
-tb_core.dut.M_valid
-[color] 6
-tb_core.dut.W_valid
+[color] 3
+tb_core.dut.decode_inst.instr[31:0]
+@100000028
+tb_core.dut.control_inst.A_sel[2:0]
+tb_core.dut.control_inst.B_sel[2:0]
 @22
-tb_core.dut.wb_data[31:0]
-tb_core.dut.wb_rd[4:0]
+tb_core.dut.control_inst.rs1[4:0]
+tb_core.dut.control_inst.rs2[4:0]
+[color] 3
+tb_core.dut.forwardingunit_inst.ex_mem_rd[4:0]
+[color] 3
+tb_core.dut.forwardingunit_inst.mem_wb_rd[4:0]
+[color] 3
+tb_core.dut.forwardingunit_inst.if_id_rs1[4:0]
+[color] 3
+tb_core.dut.forwardingunit_inst.if_id_rs2[4:0]
+@100000028
+[color] 3
+tb_core.dut.forwardingunit_inst.forwardA_br[1:0]
+[color] 3
+tb_core.dut.execute_inst.branch_type[2:0]
+@22
+[color] 2
+tb_core.dut.execute_inst.rs1[31:0]
+[color] 2
+tb_core.dut.execute_inst.rs1_br[31:0]
+@100000028
+tb_core.dut.execute_inst.forwardA_br[1:0]
+@22
+[color] 2
+tb_core.dut.execute_inst.rs2[31:0]
+[color] 2
+tb_core.dut.execute_inst.rs2_br[31:0]
+@100000028
+tb_core.dut.execute_inst.forwardB_br[1:0]
+@20000
+-
+@100000028
+[color] 2
++{tb_core.dut.execute_inst.brcmp_inst.branch_type[2:0] BRANCH UNIT } tb_core.dut.execute_inst.brcmp_inst.branch_type[2:0]
+@22
+[color] 2
+tb_core.dut.execute_inst.brcmp_inst.rs1[31:0]
+[color] 2
+tb_core.dut.execute_inst.brcmp_inst.rs2[31:0]
+@100000028
+tb_core.dut.execute_inst.forwardA_br[1:0]
+@100000029
+tb_core.dut.execute_inst.forwardB_br[1:0]
 @28
-tb_core.dut.wb_regwen
+[color] 2
+tb_core.dut.execute_inst.brcmp_inst.take_branch
+[color] 2
+tb_core.dut.execute_inst.brcmp_inst.valid
+@20000
+-
+@100000028
+[color] 2
+tb_core.dut.forwardingunit_inst.ex_A_sel[2:0]
+[color] 2
+tb_core.dut.execute_inst.A_sel[2:0]
+[color] 2
+tb_core.dut.forwardingunit_inst.ex_B_sel[2:0]
+[color] 2
+tb_core.dut.execute_inst.B_sel[2:0]
+@22
+tb_core.dut.execute_inst.imm[31:0]
+tb_core.dut.execute_inst.exmem_forwarded_data[31:0]
+tb_core.dut.execute_inst.memwb_forwarded_data[31:0]
+tb_core.dut.execute_inst.alu_inst.A[31:0]
+tb_core.dut.execute_inst.alu_inst.B[31:0]
+@100000028
+tb_core.dut.execute_inst.alu_inst.Opcode[3:0]
+@22
+tb_core.dut.execute_inst.alu_inst.Q[31:0]
+@20000
+-
+@28
+tb_core.dut.fetch_inst.pc_sel
+@22
+tb_core.dut.fetch_inst.branch_target[31:0]
+tb_core.dut.fetch_inst.pcreg_inst.pc[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

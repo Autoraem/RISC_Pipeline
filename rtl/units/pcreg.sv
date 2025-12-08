@@ -6,6 +6,7 @@ module pcreg (
     input logic pc_sel,
     output logic [31:0] pc
 );
+
     logic [31:0] pc_next;
     logic [31:0] pc_plus4;
     assign pc_plus4 = pc + 32'd4;

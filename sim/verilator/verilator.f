@@ -30,6 +30,7 @@ rtl/units/pcreg.sv
 rtl/riscv_core_min.sv
 rtl/units/pipereg.sv
 rtl/units/brcmp.sv
+rtl/units/forwardingunit.sv
 
 rtl/pipelinestages/fetch.sv
 rtl/pipelinestages/decode.sv

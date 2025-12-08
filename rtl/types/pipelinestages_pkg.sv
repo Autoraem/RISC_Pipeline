@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
 package pipelinestages_pkg;
+    import control_pkg::*;
     // IF/ID pipeline register type
     typedef struct packed {
         logic        valid;
@@ -20,11 +21,14 @@ package pipelinestages_pkg;
 
         logic [1:0]  A_sel; 
         logic [1:0]  B_sel;
-        logic        branch;
+        //logic        take_branch; 
+        logic [4:0]  rs1_id;
+        logic [4:0]  rs2_id;
         logic        mem_read;
         logic        mem_write;
         logic        reg_write;
-        logic        mem_to_reg;
+        logic        mem_to_reg; // 0 = from ALU, 1 = from MEM
+        branch_type_e branch_type;
     } id_ex_t;
 
     // EX/MEM pipeline register type

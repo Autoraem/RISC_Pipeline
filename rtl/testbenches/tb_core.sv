@@ -26,11 +26,11 @@ module tb_core;
         #20;
         rst   = 0;
         // Run simulation for some cycles
-        repeat (50) @(posedge clk);
-        rst = 1;
-        #10;
-        rst = 0;    
-        repeat (50) @(posedge clk);
+        repeat (500) @(posedge clk);
+        // rst = 1;
+        // #10;
+        // rst = 0;    
+        // repeat (50) @(posedge clk);
         // Finish
         $finish;
     end

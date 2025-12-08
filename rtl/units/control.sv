@@ -12,7 +12,9 @@ logic        regwen;
 imm_sel_e    imm_sel;
 a_sel_e      A_sel;
 b_sel_e      B_sel;
-
+wb_sel_e     wb_sel;
+branch_type_e branch_type;
+instruction_type_e     instruction_type; //debugging purpose
 // ---------------------------------------------
 // Bundle all signals into the struct
 // ---------------------------------------------
@@ -22,6 +24,10 @@ assign control_signals = '{
     imm_sel  : imm_sel,
     A_sel    : A_sel,
     B_sel    : B_sel,
+    wb_sel   : wb_sel,
+    branch_type : branch_type,
+    instruction_type   : instruction_type,
+
     rs1      : rs1,
     rs2      : rs2,
     rd       : rd
@@ -40,21 +46,26 @@ always_comb begin
     imm_sel = IMM_NONE;
     A_sel   = SRC_A_RS1;
     B_sel   = SRC_B_RS2;
+    wb_sel  = WB_FROM_ALU;
+    branch_type = BR_NONE;
+    instruction_type  = instruction_type_e'(instr[6:0]); // for debugging
 
     rs1 = instr[19:15];
     rs2 = instr[24:20];
     rd  = instr[11:7];
 
-    unique case (instr[6:0])
+    unique case (instruction_type)
 
         // ============================================================
         // R-type  (ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU)
         // ============================================================
-        7'b0110011: begin
+        OP_R_TYPE: begin
             regwen = 1;
             A_sel  = SRC_A_RS1;
             B_sel  = SRC_B_RS2;
             imm_sel = IMM_NONE;
+            wb_sel  = WB_FROM_ALU;
+            branch_type = BR_NONE;
 
             unique case ({instr[30], instr[14:12]})
                 4'b0_000: alu_op = ALU_ADD;
@@ -74,11 +85,13 @@ always_comb begin
         // ============================================================
         // I-type ALU (ADDI, SLTI, ANDI, ORI, XORI, SLLI, SRLI, SRAI)
         // ============================================================
-        7'b0010011: begin
+        OP_I_TYPE: begin
             regwen  = 1;
             A_sel   = SRC_A_RS1;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_I;
+            wb_sel  = WB_FROM_ALU;
+            branch_type = BR_NONE;
 
             unique case (instr[14:12])
                 3'b000: alu_op = ALU_ADD;   // ADDI
@@ -95,85 +108,107 @@ always_comb begin
         // ============================================================
         // LOAD (LB, LH, LW, LBU, LHU)
         // ============================================================
-        7'b0000011: begin
+        OP_LOAD: begin
             regwen  = 1;
             alu_op  = ALU_ADD;
             A_sel   = SRC_A_RS1;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_I;
+            wb_sel  = WB_FROM_MEM;
+            branch_type = BR_NONE;
         end
 
         // ============================================================
         // STORE (SB, SH, SW)
         // ============================================================
-        7'b0100011: begin
-            regwen  = 0;
+        OP_STORE: begin
+            regwen  = 0; //no writeback
             alu_op  = ALU_ADD;
             A_sel   = SRC_A_RS1;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_S;
+            wb_sel  = WB_FROM_ALU; 
+            branch_type = BR_NONE;
         end
 
         // ============================================================
         // BRANCH (BEQ, BNE, BLT, etc.)
         // ============================================================
-        7'b1100011: begin
+        OP_BRANCH: begin
             regwen  = 0;
-            alu_op  = ALU_SUB;
-            A_sel   = SRC_A_RS1;
-            B_sel   = SRC_B_RS2;
+            alu_op  = ALU_ADD;
+            A_sel   = SRC_A_PC;
+            B_sel   = SRC_B_IMM;
             imm_sel = IMM_B;
+            wb_sel  = WB_FROM_ALU;
+            unique case (instr[14:12])
+                3'b000: branch_type = BR_EQ;   // BEQ
+                3'b001: branch_type = BR_NE;   // BNE
+                3'b100: branch_type = BR_LT;   // BLT
+                3'b101: branch_type = BR_GE;   // BGE
+                3'b110: branch_type = BR_LTU;  // BLTU
+                3'b111: branch_type = BR_GEU;  // BGEU
+                default: branch_type = BR_NONE;
+            endcase
         end
 
         // ============================================================
         // JAL
         // ============================================================
-        7'b1101111: begin
+        OP_JAL: begin
             regwen  = 1;
             A_sel   = SRC_A_PC;
             B_sel   = SRC_B_FOUR;  // write PC+4 into rd
             imm_sel = IMM_J;
+            wb_sel  = WB_FROM_PC_PLUS_4;
+            branch_type = BR_UNCOND;
         end
 
         // ============================================================
         // JALR
         // ============================================================
-        7'b1100111: begin
+        OP_JALR: begin
             regwen  = 1;
             A_sel   = SRC_A_RS1;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_I;
             alu_op  = ALU_ADD;
+            wb_sel  = WB_FROM_PC_PLUS_4;
+            branch_type = BR_UNCOND;
         end
 
         // ============================================================
         // LUI
         // ============================================================
-        7'b0110111: begin
+        OP_LUI: begin
             regwen  = 1;
             A_sel   = SRC_A_ZERO;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_U;
+            wb_sel  = WB_FROM_ALU;
+            branch_type = BR_NONE;
         end
 
         // ============================================================
         // AUIPC
         // ============================================================
-        7'b0010111: begin
+        OP_AUIPC: begin
             regwen  = 1;
             A_sel   = SRC_A_PC;
             B_sel   = SRC_B_IMM;
             imm_sel = IMM_U;
+            wb_sel  = WB_FROM_ALU;
+            branch_type = BR_NONE;
         end
 
         // ============================================================
         // SYSTEM (ECALL, EBREAK, FENCE)
         // ============================================================
-        7'b1110011: begin // ECALL/EBREAK
+        OP_SYSTEM: begin // ECALL/EBREAK
             regwen = 0;
         end
 
-        7'b0001111: begin // FENCE
+        OP_FENCE: begin // FENCE
             regwen = 0;
         end
 

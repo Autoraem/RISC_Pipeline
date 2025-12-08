@@ -13,11 +13,17 @@ module decode (
     input  logic [31:0]       wb_data,
     input  logic              wb_regwen,
 
+    // Branch forwarding inputs
+    // input  fwd_sel_e          forwardA_br,
+    // input  fwd_sel_e          forwardB_br,
+    // input  logic [31:0]       ex_mem_alu_result,
+    // input  logic [31:0]       mem_wb_alu_or_mem_val,
+
     // Outputs to ID/EX pipeline register
     output logic [31:0]       rs1, 
     output logic [31:0]       rs2,
-    output logic [31:0]       imm,
-    output logic              take_branch
+    output logic [31:0]       imm
+    //output logic              take_branch
 );
 
     import control_pkg::*;
@@ -34,24 +40,35 @@ module decode (
         .rd2(rs2) // rs2 data
     );
 
-    always_comb begin
-        // $display("Decode Stage: Instr = %h, rs1 = %0d, rs2 = %0d, rd = %0d, imm = %0d, take_branch = %0b",
-        //          instr, ctrl_in.rs1, ctrl_in.rs2, ctrl_in.rd, imm, take_branch);
-        // $display("Output: rs1 data = %h, rs2 data = %h", rs1, rs2);
-        // $display("ALU op: %0d", ctrl_in.alu_op);
-    end
-
     immgen immgen_inst (
         .instr(instr),
         .imm_sel(ctrl_in.imm_sel),
         .imm_out(imm)
     );
 
-    brcmp brcmp_inst (
-        .rs1(rs1),
-        .rs2(rs2),
-        .funct3(ctrl_in.alu_op[2:0]),
-        .take_branch(take_branch)
-    );
+    // logic [31:0] rs1_br;
+    // logic [31:0] rs2_br;
+
+    // always_comb begin
+    //     unique case (forwardA_br)
+    //         FWD_NONE: rs1_br = rs1;
+    //         FWD_EXMEM: rs1_br = ex_mem_alu_result;
+    //         FWD_MEMWB: rs1_br = mem_wb_alu_or_mem_val;
+    //         default: rs1_br = 32'hDEADBEEF;
+    //     endcase
+    //     unique case (forwardB_br)
+    //         FWD_NONE: rs2_br = rs2;
+    //         FWD_EXMEM: rs2_br = ex_mem_alu_result;
+    //         FWD_MEMWB: rs2_br = mem_wb_alu_or_mem_val;
+    //         default: rs2_br = 32'hDEADBEEF;
+    //     endcase
+    // end
+
+    // brcmp brcmp_inst (
+    //     .rs1(rs1_br),
+    //     .rs2(rs2_br),
+    //     .branch_type(ctrl_in.branch_type),
+    //     .take_branch(take_branch)
+    // );
 
 endmodule

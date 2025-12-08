@@ -7,12 +7,11 @@ module riscv_core_min (
     import control_pkg::*;
     import pipelinestages_pkg::*;
     localparam ADDR_WIDTH = 10; 
-    
-    // PC
-    logic [31:0] pc;
-    logic [31:0] branch_target = 32'hDEADBEEF; // Placeholder for branch target logic
 
     // Fetch stage
+    // logic [31:0] branch_target = 32'hDEADBEEF; // Placeholder for branch target logic
+
+    logic [31:0] pc;
     logic [31:0] instr;
     fetch #(
         .ADDR_WIDTH(ADDR_WIDTH),
@@ -20,17 +19,23 @@ module riscv_core_min (
     ) fetch_inst (
         .clk(clk),
         .rst(rst),
-        .pc_sel(1'b0), // Placeholder for PC select logic
-        .branch_target(branch_target),
+        .pc_sel(E_take_branch), 
+        .branch_target(E_alu_result), 
 
         .pc(pc), 
         .instr(instr)
     );
 
     // // IF/ID pipeline register
-    logic D_valid;
-    logic [31:0] D_pc;
-    logic [31:0] D_instr;
+    if_id_t if_id_reg_d;
+    if_id_t if_id_reg_q;
+    
+    always_comb begin
+        if_id_reg_d.valid = 1'b1; // Placeholder; no stalling or flushing yet
+        if_id_reg_d.pc    = pc;
+        if_id_reg_d.instr = instr;
+    end
+
     pipereg #(
         .T(if_id_t)
     ) ifid_reg (
@@ -40,62 +45,67 @@ module riscv_core_min (
         .flush(1'b0),
 
         .d( if_id_t'({
-            1'b1, 
-            pc, 
-            instr 
-            }) ),
+            if_id_reg_d
+        }) ),
         .q( if_id_t'({
-            D_valid,
-            D_pc,
-            D_instr
-            }) )
+            if_id_reg_q
+        }) )
     );
 
     // Control unit
-    control_signals_t ctrl;
+    control_signals_t ctrl; //global scope; bad 
     control control_inst (
-        .instr(D_instr), 
-        .control_signals(ctrl)
+        .instr(if_id_reg_q.instr), 
+        .control_signals(ctrl) 
     );
 
     // Decode stage
     logic [31:0] D_imm ;
     logic [31:0] D_rs1, D_rs2;
-    logic branch_taken;
+    //logic D_take_branch;
     decode decode_inst (
         .clk(clk),
         .rst(rst),
-        .instr(D_instr),
-        .pc(D_pc),
+        .instr(if_id_reg_q.instr),
+        .pc(if_id_reg_q.pc),
         .ctrl_in(ctrl), 
         .wb_rd(wb_rd), // Placeholder for writeback register address
         .wb_data(wb_data), // Placeholder for writeback data
         .wb_regwen(wb_regwen), // Placeholder for writeback register write enable
-        
+        //.forwardA_br(forwardA_br),
+        //.forwardB_br(forwardB_br),
+        //.ex_mem_alu_result(ex_mem_reg_q.alu_result),
+        //.mem_wb_alu_or_mem_val(mem_wb_reg_q.alu_or_mem_val),
+
         .rs1(D_rs1),
         .rs2(D_rs2),
-        .imm(D_imm),
-        .take_branch(branch_taken) 
+        .imm(D_imm)
+        //.take_branch(D_take_branch) 
     );
 
     // ID/EX pipeline register
-    logic E_valid;
-    
-    logic [31:0] E_pc;
-    logic [31:0] E_rs1, E_rs2;
-    logic [31:0] E_imm;
-    logic [4:0]  E_rd; 
-    logic [3:0]  E_alu_op;
-
-    logic [1:0]  E_A_sel;
-    logic [1:0]  E_B_sel;
-    logic        E_alu_src;
-    logic        E_branch;
-    logic        E_mem_read;
-    logic        E_mem_write;
-    logic        E_reg_write;
-    logic        E_mem_to_reg;
-    
+    id_ex_t id_ex_reg_d; 
+    id_ex_t id_ex_reg_q;
+    always_comb begin
+        id_ex_reg_d.valid        = if_id_reg_q.valid;
+        id_ex_reg_d.pc           = if_id_reg_q.pc;
+        id_ex_reg_d.rs1         = D_rs1;
+        id_ex_reg_d.rs2         = D_rs2;
+        id_ex_reg_d.imm         = D_imm;
+        id_ex_reg_d.rd          = ctrl.rd;
+        id_ex_reg_d.alu_op      = ctrl.alu_op;
+        id_ex_reg_d.A_sel       = ctrl.A_sel;
+        id_ex_reg_d.B_sel       = ctrl.B_sel;
+        //id_ex_reg_d.take_branch      = D_take_branch; 
+        id_ex_reg_d.rs1_id      = ctrl.rs1;
+        id_ex_reg_d.rs2_id      = ctrl.rs2;
+        id_ex_reg_d.mem_read    = 1'b0; // placeholder
+        id_ex_reg_d.mem_write   = 1'b0; // placeholder
+        id_ex_reg_d.reg_write   = ctrl.regwen;
+        id_ex_reg_d.mem_to_reg  = ctrl.wb_sel; // placeholder
+        id_ex_reg_d.branch_type = ctrl.branch_type;
+    end
+    //only time we can pass ctrl signals is here, otherwise need to pass along
     pipereg #(
         .T(id_ex_t)
     ) idex_reg (
@@ -105,38 +115,36 @@ module riscv_core_min (
         .flush(1'b0),
 
         .d( id_ex_t'({
-            D_valid,
-            D_pc,
-            D_rs1,
-            D_rs2,
-            D_imm,
-            ctrl.rd,
-            ctrl.alu_op,
-            ctrl.A_sel,
-            ctrl.B_sel,
-            branch_taken, // branch
-            1'b0, // mem_read placeholder
-            1'b0, // mem_write placeholder
-            ctrl.regwen, // reg_write
-            1'b0  // mem_to_reg placeholder
+            id_ex_reg_d
         }) ),
         .q( id_ex_t'({
-            E_valid,
-            E_pc,
-            E_rs1,
-            E_rs2,
-            E_imm,
-            E_rd,
-            E_alu_op,
-            E_A_sel,
-            E_B_sel,
-            E_branch,
-            E_mem_read,
-            E_mem_write,
-            E_reg_write,
-            E_mem_to_reg
+            id_ex_reg_q
         }) )
     );
+
+    // Forwarding unit
+    a_sel_e forwardA;
+    b_sel_e forwardB;
+    fwd_sel_e forwardA_br;
+    fwd_sel_e forwardB_br;
+    forwardingunit forwardingunit_inst (
+        .id_ex_rs1(id_ex_reg_q.rd), // Placeholder; should be rs1 address
+        .id_ex_rs2(id_ex_reg_q.rd), // Placeholder; should be rs2 address
+        .ex_mem_rd(ex_mem_reg_q.rd),
+        .ex_mem_reg_write(ex_mem_reg_q.reg_write),
+        .mem_wb_rd(mem_wb_reg_q.rd),
+        .mem_wb_reg_write(mem_wb_reg_q.reg_write),
+        .ex_A_sel(id_ex_reg_q.A_sel),
+        .ex_B_sel(id_ex_reg_q.B_sel),
+        .if_id_rs1(id_ex_reg_q.rs1_id), 
+        .if_id_rs2(id_ex_reg_q.rs2_id), 
+
+        .forwardA_alu(forwardA),
+        .forwardB_alu(forwardB),
+        .forwardA_br(forwardA_br), 
+        .forwardB_br(forwardB_br)  
+    );
+
 
     // Execute stage
     logic [31:0] E_alu_result;
@@ -144,38 +152,52 @@ module riscv_core_min (
     logic        E_neg;
     logic        E_overflow;
     logic [31:0] E_sd; // Store data
-    logic        E_br_taken;
+    logic        E_take_branch;
     execute execute_inst (
         .clk(clk),
         .rst(rst),
+        .valid(id_ex_reg_q.valid), //for branch prediction
 
-        .rs1_data(E_rs1),
-        .rs2_data(E_rs2),
-        .imm(E_imm),
-        .alu_op(E_alu_op),
-        .A_sel(E_A_sel), 
-        .B_sel(E_B_sel), 
-        .pc(E_pc),
-        .is_branch(E_branch),
+        .rs1_data(id_ex_reg_q.rs1),
+        .rs2_data(id_ex_reg_q.rs2),
+        .exmem_forwarded_data(ex_mem_reg_q.alu_result),
+        .memwb_forwarded_data(mem_wb_reg_q.alu_or_mem_val),
+        .imm(id_ex_reg_q.imm),
+        .alu_op(id_ex_reg_q.alu_op),
+        .A_sel(forwardA), 
+        .B_sel(forwardB), 
+        .pc(id_ex_reg_q.pc),
+        
+        .rs1(id_ex_reg_q.rs1),
+        .rs2(id_ex_reg_q.rs2),
+        .forwardA_br(forwardA_br),
+        .forwardB_br(forwardB_br),
+        .ex_mem_alu_result(ex_mem_reg_q.alu_result),
+        .mem_wb_alu_or_mem_val(mem_wb_reg_q.alu_or_mem_val),
+        .branch_type(id_ex_reg_q.branch_type),
 
         .alu_result(E_alu_result),
         .zero(E_zero),
         .neg(E_neg),
         .overflow(E_overflow),
-        .sd(E_sd), 
-        .br_taken(E_br_taken) 
+        .sd(E_sd),
+        .take_branch(E_take_branch)
     );
 
     // EX/MEM pipeline register
-    logic M_valid;
-    logic [31:0] M_alu_result;
-    logic [31:0] M_rs2;
-    logic [4:0]  M_rd;
-
-    logic        M_mem_read;
-    logic        M_mem_write;
-    logic        M_reg_write;
-    logic        M_mem_to_reg;
+    ex_mem_t ex_mem_reg_d;
+    ex_mem_t ex_mem_reg_q;
+    always_comb begin
+        ex_mem_reg_d.valid        = id_ex_reg_q.valid;
+        ex_mem_reg_d.alu_result   = E_alu_result;
+        ex_mem_reg_d.rs2         = E_sd;
+        ex_mem_reg_d.rd          = id_ex_reg_q.rd;
+        ex_mem_reg_d.mem_read     = id_ex_reg_q.mem_read;
+        ex_mem_reg_d.mem_write    = id_ex_reg_q.mem_write;
+        ex_mem_reg_d.reg_write    = id_ex_reg_q.reg_write;
+        ex_mem_reg_d.mem_to_reg   = id_ex_reg_q.mem_to_reg;
+    end
+    
     pipereg #(
         .T(ex_mem_t)
     ) exmem_reg (
@@ -185,24 +207,10 @@ module riscv_core_min (
         .flush(1'b0),
 
         .d( ex_mem_t'({
-            E_valid,
-            E_alu_result,
-            E_sd,
-            E_rd,
-            E_mem_read,
-            E_mem_write,
-            E_reg_write,
-            E_mem_to_reg
+            ex_mem_reg_d
         }) ),
         .q( ex_mem_t'({
-            M_valid,
-            M_alu_result,
-            M_rs2,
-            M_rd,
-            M_mem_read,
-            M_mem_write,
-            M_reg_write,
-            M_mem_to_reg
+            ex_mem_reg_q
         }) )
     );
 
@@ -212,20 +220,26 @@ module riscv_core_min (
         .clk(clk),
         .rst(rst),
 
-        .alu_result(M_alu_result),
-        .rs2_data(M_rs2),
-        .mem_we(M_mem_write),
-        .mem_ren(M_mem_read),
+        .alu_result(ex_mem_reg_q.alu_result),
+        .rs2_data(ex_mem_reg_q.rs2),
+        .mem_we(ex_mem_reg_q.mem_write),
+        .mem_ren(ex_mem_reg_q.mem_read),
         .mem_byte_en(4'b1111), // Placeholder for byte enables
 
         .mem_rdata(M_mem_rdata) 
     );
 
     // MEM/WB pipeline register
-    logic W_valid;
-    logic [31:0] W_alu_or_mem_val;
-    logic [4:0]  W_rd;
-    logic        W_reg_write;
+    mem_wb_t mem_wb_reg_d;
+    mem_wb_t mem_wb_reg_q;
+    always_comb begin
+        mem_wb_reg_d.valid          = ex_mem_reg_q.valid;
+        mem_wb_reg_d.alu_or_mem_val = ex_mem_reg_q.mem_to_reg
+                                        ? M_mem_rdata
+                                        : ex_mem_reg_q.alu_result;
+        mem_wb_reg_d.rd             = ex_mem_reg_q.rd;
+        mem_wb_reg_d.reg_write      = ex_mem_reg_q.reg_write;
+    end
     
     pipereg #(
         .T(mem_wb_t)
@@ -236,16 +250,10 @@ module riscv_core_min (
         .flush(1'b0),
 
         .d( mem_wb_t'({
-            M_valid,
-            M_mem_to_reg ? M_mem_rdata : M_alu_result,
-            M_rd,
-            M_reg_write
+            mem_wb_reg_d
         }) ),
         .q( mem_wb_t'({
-            W_valid,
-            W_alu_or_mem_val,
-            W_rd,
-            W_reg_write
+            mem_wb_reg_q
         }) )
     );
 
@@ -255,12 +263,12 @@ module riscv_core_min (
     logic        wb_regwen;
     
     wb writeback_inst (
-        .mem_data(M_mem_rdata),
-        .alu_result(M_alu_result),
-        .pc_plus_4(M_alu_result + 32'd4), // Placeholder for PC+4
-        .wb_sel(M_mem_to_reg ? WB_FROM_MEM : WB_FROM_ALU), // Placeholder for WB select
-        .rd_in(M_rd),
-        .regwrite_in(M_reg_write),
+        .mem_data(mem_wb_reg_q.alu_or_mem_val),
+        .alu_result(mem_wb_reg_q.alu_or_mem_val),
+        .pc_plus_4(mem_wb_reg_q.alu_or_mem_val + 32'd4), // Placeholder for PC+4
+        .wb_sel(mem_wb_reg_q.alu_or_mem_val ? WB_FROM_MEM : WB_FROM_ALU), // Placeholder for WB select
+        .rd_in(mem_wb_reg_q.rd),
+        .regwrite_in(mem_wb_reg_q.reg_write),
 
         .wb_rd(wb_rd), 
         .wb_data(wb_data), 

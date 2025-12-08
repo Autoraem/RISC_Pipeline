@@ -31,3 +31,14 @@ Fence, Ecall, EBREAK, Traps, Interrupts?
 U-boot (Perhaps run this) 
 BRAM/ Give up on memory compiler
 Makefile to autogenerate the verilator.f file
+# Hazards to consider
+ALU -> ALU (EX -> EX) (Intercept in EX/MEM reg)✅
+ALU -> ALU (MEM -> EX) (Intercept in MEM/WB reg)✅
+ALU -> Store (EX -> MEM)
+ALU -> Branch✅
+
+Always Predicts Not Taken, Hazard Detection/Flushing Required
+
+# Notes
+Branch doesn't update till writeback
+Increment is weird
