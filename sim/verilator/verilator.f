@@ -31,6 +31,7 @@ rtl/riscv_core_min.sv
 rtl/units/pipereg.sv
 rtl/units/brcmp.sv
 rtl/units/forwardingunit.sv
+rtl/units/hazardunit.sv
 
 rtl/pipelinestages/fetch.sv
 rtl/pipelinestages/decode.sv

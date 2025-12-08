@@ -21,8 +21,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     CData/*2:0*/ tb_core__DOT__dut__DOT__forwardB;
     CData/*1:0*/ tb_core__DOT__dut__DOT__forwardA_br;
     CData/*1:0*/ tb_core__DOT__dut__DOT__forwardB_br;
+    CData/*0:0*/ tb_core__DOT__dut__DOT__stall_pc;
+    CData/*0:0*/ tb_core__DOT__dut__DOT__flush_ifid;
     CData/*0:0*/ tb_core__DOT__dut__DOT__E_zero;
     CData/*0:0*/ tb_core__DOT__dut__DOT__E_neg;
+    CData/*0:0*/ tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel;
     CData/*3:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__alu_op;
     CData/*0:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__regwen;
     CData/*2:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__imm_sel;
@@ -31,6 +34,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     CData/*1:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__wb_sel;
     CData/*2:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__branch_type;
     CData/*6:0*/ tb_core__DOT__dut__DOT__control_inst__DOT__instruction_type;
+    CData/*0:0*/ tb_core__DOT__dut__DOT__hazard_unit_inst__DOT__id_uses_rs1;
     CData/*4:0*/ tb_core__DOT__dut__DOT__execute_inst__DOT__alu_inst__DOT__shamt;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__tb_core__DOT__clk__0;
@@ -49,8 +53,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     IData/*26:0*/ __VdfgRegularize_he50b618e_0_1;
     IData/*31:0*/ __VactIterCount;
     VlWide<3>/*64:0*/ tb_core__DOT__dut__DOT__if_id_reg_q;
-    VlWide<5>/*158:0*/ tb_core__DOT__dut__DOT__id_ex_reg_d;
-    VlWide<5>/*158:0*/ tb_core__DOT__dut__DOT__id_ex_reg_q;
+    VlWide<6>/*165:0*/ tb_core__DOT__dut__DOT__id_ex_reg_d;
+    VlWide<6>/*165:0*/ tb_core__DOT__dut__DOT__id_ex_reg_q;
     VlWide<3>/*73:0*/ tb_core__DOT__dut__DOT__ex_mem_reg_q;
     QData/*38:0*/ tb_core__DOT__dut__DOT__mem_wb_reg_q;
     VlUnpacked<IData/*31:0*/, 1024> tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__mem;

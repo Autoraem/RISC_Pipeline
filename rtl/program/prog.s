@@ -9,3 +9,4 @@ loop:
 
     bne  x1, x2, loop   # if counter != limit, continue
 
+addi x2, x0, 11     # Set to 11

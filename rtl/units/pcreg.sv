@@ -4,6 +4,7 @@ module pcreg (
     
     input logic [31:0] branch_target,
     input logic pc_sel,
+    input logic pc_stall,
     output logic [31:0] pc
 );
 
@@ -12,11 +13,16 @@ module pcreg (
     assign pc_plus4 = pc + 32'd4;
     // PC next logic
     always_comb begin
-        unique case (pc_sel)
-            0: pc_next = pc_plus4;
-            1: pc_next = branch_target;
-            default:   pc_next = 32'b0;
-        endcase
+        if (pc_stall) begin
+            pc_next = pc; // Hold current PC if stalled
+        end
+        else begin
+            unique case (pc_sel)
+                0: pc_next = pc_plus4;
+                1: pc_next = branch_target;
+                default:   pc_next = pc_plus4;
+            endcase
+        end
     end
 
     always_ff @(posedge clk) begin

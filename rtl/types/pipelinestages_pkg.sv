@@ -29,6 +29,7 @@ package pipelinestages_pkg;
         logic        reg_write;
         logic        mem_to_reg; // 0 = from ALU, 1 = from MEM
         branch_type_e branch_type;
+        instruction_type_e instruction_type; 
     } id_ex_t;
 
     // EX/MEM pipeline register type

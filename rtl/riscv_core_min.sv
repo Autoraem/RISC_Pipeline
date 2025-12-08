@@ -21,6 +21,7 @@ module riscv_core_min (
         .rst(rst),
         .pc_sel(E_take_branch), 
         .branch_target(E_alu_result), 
+        .pc_stall(stall_pc), // Placeholder; no stalling logic yet
 
         .pc(pc), 
         .instr(instr)
@@ -31,7 +32,7 @@ module riscv_core_min (
     if_id_t if_id_reg_q;
     
     always_comb begin
-        if_id_reg_d.valid = 1'b1; // Placeholder; no stalling or flushing yet
+        if_id_reg_d.valid = !stall_ifid; 
         if_id_reg_d.pc    = pc;
         if_id_reg_d.instr = instr;
     end
@@ -41,8 +42,8 @@ module riscv_core_min (
     ) ifid_reg (
         .clk(clk),
         .reset(rst),
-        .stall(1'b0),
-        .flush(1'b0),
+        .stall(stall_ifid),
+        .flush(flush_ifid),
 
         .d( if_id_t'({
             if_id_reg_d
@@ -104,6 +105,7 @@ module riscv_core_min (
         id_ex_reg_d.reg_write   = ctrl.regwen;
         id_ex_reg_d.mem_to_reg  = ctrl.wb_sel; // placeholder
         id_ex_reg_d.branch_type = ctrl.branch_type;
+        id_ex_reg_d.instruction_type = ctrl.instruction_type; // for debugging
     end
     //only time we can pass ctrl signals is here, otherwise need to pass along
     pipereg #(
@@ -112,7 +114,7 @@ module riscv_core_min (
         .clk(clk),
         .reset(rst),
         .stall(1'b0),
-        .flush(1'b0),
+        .flush(flush_idex),
 
         .d( id_ex_t'({
             id_ex_reg_d
@@ -128,8 +130,8 @@ module riscv_core_min (
     fwd_sel_e forwardA_br;
     fwd_sel_e forwardB_br;
     forwardingunit forwardingunit_inst (
-        .id_ex_rs1(id_ex_reg_q.rd), // Placeholder; should be rs1 address
-        .id_ex_rs2(id_ex_reg_q.rd), // Placeholder; should be rs2 address
+        .id_ex_rs1(id_ex_reg_q.rd), 
+        .id_ex_rs2(id_ex_reg_q.rd), 
         .ex_mem_rd(ex_mem_reg_q.rd),
         .ex_mem_reg_write(ex_mem_reg_q.reg_write),
         .mem_wb_rd(mem_wb_reg_q.rd),
@@ -145,6 +147,35 @@ module riscv_core_min (
         .forwardB_br(forwardB_br)  
     );
 
+    // Hazard unit
+    logic        stall_pc;
+    logic        stall_ifid;
+    logic        flush_ifid;
+    logic        flush_idex;
+    hazardunit hazard_unit_inst (
+        .id_valid(if_id_reg_q.valid),
+        .id_rs1(if_id_reg_q.instr[19:15]),
+        .id_rs2(if_id_reg_q.instr[24:20]),
+        .id_instruction_type(if_id_reg_q.instr[6:0]),
+        .ex_instruction_type(id_ex_reg_q.instruction_type),
+        // .id_uses_rs1(1'b1), // Placeholder; should be determined from instruction
+        // .id_uses_rs2(1'b1), // Placeholder; should be determined from instruction
+
+        .ex_valid(id_ex_reg_q.valid),
+        .ex_rd(id_ex_reg_q.rd),
+        // .ex_is_load(id_ex_reg_q.instruction_type == INSTRUCTION_TYPE_LOAD), 
+
+        // .ex_branch(id_ex_reg_q.instruction_type == INSTRUCTION_TYPE_BRANCH), 
+        // .ex_jump(id_ex_reg_q.instruction_type == INSTRUCTION_TYPE_JUMP), 
+        .ex_taken(E_take_branch),
+        .ex_target(E_alu_result),
+        .ex_pc_plus_4(id_ex_reg_q.pc + 32'd4),
+
+        .stall_pc(stall_pc),
+        .stall_ifid(stall_ifid),
+        .flush_ifid(flush_ifid),
+        .flush_idex(flush_idex)
+    );
 
     // Execute stage
     logic [31:0] E_alu_result;

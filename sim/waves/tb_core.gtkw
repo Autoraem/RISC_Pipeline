@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Thu Dec  4 22:18:19 2025
+[*] Mon Dec  8 08:39:36 2025
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Thu Dec  4 12:31:24 2025"
-[dumpfile_size] 16393
+[dumpfile_mtime] "Mon Dec  8 08:38:59 2025"
+[dumpfile_size] 18805
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 424700
+[timestart] 463800
 [size] 2560 1345
 [pos] -27 -24
-*-14.316232 528800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.316232 24000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
 [treeopen] tb_core.dut.control_inst.control_signals.
@@ -164,7 +164,6 @@ tb_core.dut.execute_inst.brcmp_inst.rs1[31:0]
 tb_core.dut.execute_inst.brcmp_inst.rs2[31:0]
 @100000028
 tb_core.dut.execute_inst.forwardA_br[1:0]
-@100000029
 tb_core.dut.execute_inst.forwardB_br[1:0]
 @28
 [color] 2
@@ -199,5 +198,63 @@ tb_core.dut.fetch_inst.pc_sel
 @22
 tb_core.dut.fetch_inst.branch_target[31:0]
 tb_core.dut.fetch_inst.pcreg_inst.pc[31:0]
+@20000
+-
+@28
+[color] 2
+tb_core.dut.hazard_unit_inst.do_redirect
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_branch
+@100000028
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_instruction_type[6:0]
+@28
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_is_load
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_jump
+@22
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_pc_plus_4[31:0]
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_rd[4:0]
+@28
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_taken
+@22
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_target[31:0]
+@28
+[color] 2
+tb_core.dut.hazard_unit_inst.ex_valid
+[color] 2
+tb_core.dut.hazard_unit_inst.flush_idex
+[color] 2
+tb_core.dut.hazard_unit_inst.flush_ifid
+@100000028
+[color] 2
+tb_core.dut.hazard_unit_inst.id_instruction_type[6:0]
+@22
+[color] 2
+tb_core.dut.hazard_unit_inst.id_rs1[4:0]
+[color] 2
+tb_core.dut.hazard_unit_inst.id_rs2[4:0]
+@28
+[color] 2
+tb_core.dut.hazard_unit_inst.id_uses_rs1
+[color] 2
+tb_core.dut.hazard_unit_inst.id_uses_rs2
+[color] 2
+tb_core.dut.hazard_unit_inst.id_valid
+[color] 2
+tb_core.dut.hazard_unit_inst.jump_redirect
+[color] 2
+tb_core.dut.hazard_unit_inst.load_use_hazard
+[color] 2
+tb_core.dut.hazard_unit_inst.mispredict
+[color] 2
+tb_core.dut.hazard_unit_inst.stall_ifid
+[color] 2
+tb_core.dut.hazard_unit_inst.stall_pc
 [pattern_trace] 1
 [pattern_trace] 0
