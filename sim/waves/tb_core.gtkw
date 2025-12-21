@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Mon Dec  8 08:39:36 2025
+[*] Tue Dec  9 10:09:23 2025
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Mon Dec  8 08:38:59 2025"
+[dumpfile_mtime] "Tue Dec  9 08:22:29 2025"
 [dumpfile_size] 18805
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 463800
-[size] 2560 1345
+[timestart] 14900
+[size] 1920 985
 [pos] -27 -24
-*-14.316232 24000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.316232 389000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
 [treeopen] tb_core.dut.control_inst.control_signals.
@@ -24,7 +24,7 @@
 [sst_width] 297
 [signals_width] 570
 [sst_expanded] 1
-[sst_vpaned_height] 419
+[sst_vpaned_height] 293
 @100000028
 tb_core.clk
 @28
@@ -91,13 +91,13 @@ tb_core.dut.decode_inst.ctrl_in.wb_sel[1:0]
 -
 @28
 [color] 6
-tb_core.dut.if_id_reg_q.valid
++{tb_core.dut.if_id_reg_q.valid IFID_reg} tb_core.dut.if_id_reg_q.valid
 [color] 6
-tb_core.dut.id_ex_reg_q.valid
++{tb_core.dut.id_ex_reg_q.valid IDEX_reg} tb_core.dut.id_ex_reg_q.valid
 [color] 6
-tb_core.dut.ex_mem_reg_q.valid
++{tb_core.dut.ex_mem_reg_q.valid EXMEM_reg} tb_core.dut.ex_mem_reg_q.valid
 [color] 6
-tb_core.dut.mem_wb_reg_q.valid
++{tb_core.dut.mem_wb_reg_q.valid MEMWB_reg} tb_core.dut.mem_wb_reg_q.valid
 @20000
 -
 @22
