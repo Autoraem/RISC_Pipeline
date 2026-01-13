@@ -16,3 +16,5 @@ Update Verilator.f file as well as the Makefile
 Add all dependecies to verilator.f
 
 Packages first!
+
+make all
