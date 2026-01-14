@@ -19,7 +19,6 @@ VL_ATTR_COLD void Vtb_core___024root___eval_initial__TOP(Vtb_core___024root* vlS
     Vtb_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile[0U] = 0U;
     VL_WRITEF_NX("IMEM: loading rtl/program/program.hex\n",0);
     VL_READMEM_N(true, 32, 1024, 0, "rtl/program/program.hex"s
                  ,  &(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__mem)
@@ -160,7 +159,6 @@ VL_ATTR_COLD void Vtb_core___024root____Vm_traceActivitySetAll(Vtb_core___024roo
     // Body
     vlSelfRef.__Vm_traceActivity[0U] = 1U;
     vlSelfRef.__Vm_traceActivity[1U] = 1U;
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
 }
 
 VL_ATTR_COLD void Vtb_core___024root___ctor_var_reset(Vtb_core___024root* vlSelf) {
@@ -218,7 +216,7 @@ VL_ATTR_COLD void Vtb_core___024root___ctor_var_reset(Vtb_core___024root* vlSelf
     vlSelf->tb_core__DOT__dut__DOT__mem_inst__DOT__dmem_inst__DOT__unnamedblk1__DOT__i = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 6936226912066489694ull);
     vlSelf->__VdfgRegularize_he50b618e_0_1 = VL_SCOPED_RAND_RESET_I(27, __VscopeHash, 17486299696804854413ull);
     vlSelf->__Vtrigprevexpr___TOP__tb_core__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 8426859880970588522ull);
-    for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

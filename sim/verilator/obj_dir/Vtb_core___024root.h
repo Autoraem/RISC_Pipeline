@@ -61,7 +61,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     VlUnpacked<IData/*31:0*/, 1024> tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__mem;
     VlUnpacked<IData/*31:0*/, 32> tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile;
     VlUnpacked<IData/*31:0*/, 4096> tb_core__DOT__dut__DOT__mem_inst__DOT__dmem_inst__DOT__mem;
-    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
     VlTriggerScheduler __VtrigSched_h78f94584__0;
     VlTriggerVec<1> __VstlTriggered;

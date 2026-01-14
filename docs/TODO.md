@@ -31,6 +31,7 @@ Fence, Ecall, EBREAK, Traps, Interrupts?
 U-boot (Perhaps run this) 
 BRAM/ Give up on memory compiler
 Makefile to autogenerate the verilator.f file
+Control signals are not overrided in control but with logic before it enters each stage
 # Hazards to consider
 ALU -> ALU (EX -> EX) (Intercept in EX/MEM reg)✅
 ALU -> ALU (MEM -> EX) (Intercept in MEM/WB reg)✅

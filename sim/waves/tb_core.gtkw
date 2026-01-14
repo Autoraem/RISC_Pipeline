@@ -1,20 +1,21 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan 14 08:01:26 2026
+[*] Wed Jan 14 19:53:03 2026
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Wed Jan 14 07:38:00 2026"
-[dumpfile_size] 6057
+[dumpfile_mtime] "Wed Jan 14 19:52:26 2026"
+[dumpfile_size] 10425
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 0
+[timestart] 969400
 [size] 1920 985
-[pos] -27 -24
-*-14.316232 60800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-14.316232 1090100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
 [treeopen] tb_core.dut.control_inst.control_signals.
 [treeopen] tb_core.dut.decode_inst.
 [treeopen] tb_core.dut.decode_inst.ctrl_in.
+[treeopen] tb_core.dut.decode_inst.regfile_inst.
 [treeopen] tb_core.dut.execute_inst.
 [treeopen] tb_core.dut.execute_inst.brcmp_inst.
 [treeopen] tb_core.dut.fetch_inst.
@@ -34,9 +35,6 @@ tb_core.rst
 tb_core.dut.pc[31:0]
 [color] 3
 tb_core.dut.ifid_reg.q.pc[31:0]
-@200
--The instructions are shifted by one block
-@22
 [color] 3
 tb_core.dut.decode_inst.instr[31:0]
 tb_core.dut.execute_inst.pc[31:0]
@@ -59,6 +57,56 @@ tb_core.dut.decode_inst.regfile_inst.regfile[5][31:0]
 tb_core.dut.decode_inst.regfile_inst.regfile[6][31:0]
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[7][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[8][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[9][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[10][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[11][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[12][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[13][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[14][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[15][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[16][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[17][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[18][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[19][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[20][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[21][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[22][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[23][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[24][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[25][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[26][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[27][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[28][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[29][31:0]
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[30][31:0]
+@23
+[color] 1
+tb_core.dut.decode_inst.regfile_inst.regfile[31][31:0]
+@22
 [color] 2
 +{tb_core.dut.decode_inst.pc[31:0] INSTR START HERE} tb_core.dut.decode_inst.pc[31:0]
 @20000
@@ -225,9 +273,7 @@ tb_core.dut.forwardingunit_inst.forwardA_br[1:0]
 tb_core.dut.forwardingunit_inst.forwardB_br[1:0]
 @22
 tb_core.dut.execute_inst.alu_inst.A[31:0]
-@23
 tb_core.dut.execute_inst.alu_inst.B[31:0]
-@22
 tb_core.dut.if_id_reg_q.pc[31:0]
 tb_core.dut.id_ex_reg_q.pc[31:0]
 @20000

@@ -15,7 +15,6 @@ void Vtb_core___024root___eval_initial(Vtb_core___024root* vlSelf) {
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     Vtb_core___024root___eval_initial__TOP(vlSelf);
-    vlSelfRef.__Vm_traceActivity[1U] = 1U;
     Vtb_core___024root___eval_initial__TOP__Vtiming__0(vlSelf);
     Vtb_core___024root___eval_initial__TOP__Vtiming__1(vlSelf);
 }
@@ -35,7 +34,7 @@ void Vtb_core___024root___eval_nba(Vtb_core___024root* vlSelf) {
     // Body
     if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb_core___024root___nba_sequent__TOP__0(vlSelf);
-        vlSelfRef.__Vm_traceActivity[2U] = 1U;
+        vlSelfRef.__Vm_traceActivity[1U] = 1U;
     }
 }
 

@@ -23,12 +23,12 @@ VlCoroutine Vtb_core___024root___eval_initial__TOP__Vtiming__0(Vtb_core___024roo
                                                              nullptr, 
                                                              "@(posedge tb_core.clk)", 
                                                              "rtl/testbenches/tb_core.sv", 
-                                                             29);
+                                                             26);
         tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 
             = (tb_core__DOT__unnamedblk1_1__DOT____Vrepeat0 
                - (IData)(1U));
     }
-    VL_FINISH_MT("rtl/testbenches/tb_core.sv", 35, "");
+    VL_FINISH_MT("rtl/testbenches/tb_core.sv", 28, "");
 }
 
 VlCoroutine Vtb_core___024root___eval_initial__TOP__Vtiming__1(Vtb_core___024root* vlSelf) {
@@ -153,7 +153,9 @@ void Vtb_core___024root___nba_sequent__TOP__0(Vtb_core___024root* vlSelf) {
     if (vlSelfRef.tb_core__DOT__rst) {
         vlSelfRef.tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__unnamedblk1__DOT__i = 0x00000020U;
         __VdlySet__tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile__v0 = 1U;
-    } else if ((1U & (IData)(vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q))) {
+    } else if (((IData)(vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q) 
+                & (0U != (0x0000001fU & (IData)((vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
+                                                 >> 1U)))))) {
         __VdlyVal__tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile__v32 
             = ((0U == ((0U != (IData)((vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
                                        >> 6U))) ? 1U

@@ -10,7 +10,7 @@ module regfile(
 //two read ports, one write port
 //read up on specifications
     logic [31:0] regfile [31:0];
-
+    assign regfile[0] = 32'b0; // x0 is always zero
     always_ff @(posedge clk) begin
         if (rst) begin
             // Initialize register file to zero on reset
@@ -18,12 +18,11 @@ module regfile(
             for (i = 0; i < 32; i = i + 1) begin
                 regfile[i] <= 32'b0;
             end
-        end else if (we) begin
+        end else if (we && (rd != 5'd0)) begin
             regfile[rd] <= wd;
         end
     end
-    assign regfile[0] = 32'b0; // x0 is always zero
-
+    
     assign rd1 = regfile[rs1];
     assign rd2 = regfile[rs2];
 
