@@ -16,3 +16,7 @@ Update Verilator.f file as well as the Makefile
 Add all dependecies to verilator.f
 
 Packages first!
+
+make all -> make wave
+
+![alt text](https://github.com/Autoraem/RISC_Pipeline/blob/master/docs/Architecture.png "Architecture Diagram")
