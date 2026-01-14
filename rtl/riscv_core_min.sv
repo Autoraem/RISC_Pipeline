@@ -12,6 +12,7 @@ module riscv_core_min (
     // logic [31:0] branch_target = 32'hDEADBEEF; // Placeholder for branch target logic
 
     logic [31:0] pc;
+    logic [31:0] pc_previous;
     logic [31:0] instr;
     fetch #(
         .ADDR_WIDTH(ADDR_WIDTH),
@@ -24,6 +25,7 @@ module riscv_core_min (
         .pc_stall(stall_pc), // Placeholder; no stalling logic yet
 
         .pc(pc), 
+        .pc_previous(pc_previous),
         .instr(instr)
     );
 
@@ -33,7 +35,7 @@ module riscv_core_min (
     
     always_comb begin
         if_id_reg_d.valid = !stall_ifid; 
-        if_id_reg_d.pc    = pc;
+        if_id_reg_d.pc    = pc_previous;
         if_id_reg_d.instr = instr;
     end
 

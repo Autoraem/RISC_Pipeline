@@ -11,6 +11,7 @@ module fetch #(
     input  logic        pc_stall, // PC stall signal
     
     output logic [31:0] pc,
+    output logic [31:0] pc_previous,
     output logic [31:0] instr
 );
 
@@ -19,8 +20,9 @@ module fetch #(
         .rst(rst),
         .branch_target(branch_target),
         .pc_sel(pc_sel),
-        .pc_stall(1'b0), // Placeholder; no stalling logic yet
-        .pc(pc)
+        .pc_stall(pc_stall), // Placeholder; no stalling logic yet
+        .pc(pc),
+        .pc_previous(pc_previous)
     );
 
     imem #(.ADDR_WIDTH(ADDR_WIDTH), .INIT_HEX(INIT_HEX)) imem_inst (

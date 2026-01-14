@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Tue Dec  9 10:09:23 2025
+[*] Wed Jan 14 08:01:26 2026
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Tue Dec  9 08:22:29 2025"
-[dumpfile_size] 18805
+[dumpfile_mtime] "Wed Jan 14 07:38:00 2026"
+[dumpfile_size] 6057
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 14900
+[timestart] 0
 [size] 1920 985
 [pos] -27 -24
-*-14.316232 389000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.316232 60800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
 [treeopen] tb_core.dut.control_inst.control_signals.
@@ -34,6 +34,9 @@ tb_core.rst
 tb_core.dut.pc[31:0]
 [color] 3
 tb_core.dut.ifid_reg.q.pc[31:0]
+@200
+-The instructions are shifted by one block
+@22
 [color] 3
 tb_core.dut.decode_inst.instr[31:0]
 tb_core.dut.execute_inst.pc[31:0]
@@ -198,6 +201,35 @@ tb_core.dut.fetch_inst.pc_sel
 @22
 tb_core.dut.fetch_inst.branch_target[31:0]
 tb_core.dut.fetch_inst.pcreg_inst.pc[31:0]
+@200
+-
+@22
+[color] 7
+tb_core.dut.id_ex_reg_q.rs1[31:0]
+[color] 7
+tb_core.dut.id_ex_reg_q.rs2[31:0]
+[color] 7
+tb_core.dut.id_ex_reg_q.imm[31:0]
+[color] 7
+tb_core.dut.execute_inst.rs2_br[31:0]
+[color] 1
+tb_core.dut.forwardingunit_inst.if_id_rs1[4:0]
+[color] 1
+tb_core.dut.forwardingunit_inst.if_id_rs2[4:0]
+[color] 1
+tb_core.dut.forwardingunit_inst.ex_mem_rd[4:0]
+@100000028
+[color] 1
+tb_core.dut.forwardingunit_inst.forwardA_br[1:0]
+[color] 1
+tb_core.dut.forwardingunit_inst.forwardB_br[1:0]
+@22
+tb_core.dut.execute_inst.alu_inst.A[31:0]
+@23
+tb_core.dut.execute_inst.alu_inst.B[31:0]
+@22
+tb_core.dut.if_id_reg_q.pc[31:0]
+tb_core.dut.id_ex_reg_q.pc[31:0]
 @20000
 -
 @28

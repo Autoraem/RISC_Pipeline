@@ -38,10 +38,10 @@ module forwardingunit (
         end
 
         // --- Forwarding for rs2 (operand B) ---
-        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs2) && (ex_B_sel != SRC_B_IMM)) begin
+        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs2)) begin
             forwardB_alu = SRC_B_EXMEM;
         end
-        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs2) && (ex_B_sel != SRC_B_IMM)) begin
+        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs2)) begin
             forwardB_alu = SRC_B_MEMWB;
         end
     end

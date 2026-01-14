@@ -82,18 +82,23 @@ module execute (
     logic [31:0] rs1_br;
     logic [31:0] rs2_br;
     always_comb begin
-        unique case (forwardA_br)
-            FWD_NONE: rs1_br = rs1;
-            FWD_EXMEM: rs1_br = ex_mem_alu_result;
-            FWD_MEMWB: rs1_br = mem_wb_alu_or_mem_val;
-            default: rs1_br = 32'hDEADBEEF;
-        endcase
-        unique case (forwardB_br)
-            FWD_NONE: rs2_br = rs2;
-            FWD_EXMEM: rs2_br = ex_mem_alu_result;
-            FWD_MEMWB: rs2_br = mem_wb_alu_or_mem_val;
-            default: rs2_br = 32'hDEADBEEF;
-        endcase
+        if (!valid) begin
+            rs1_br = rs1;
+            rs2_br = rs2;
+        end else begin
+            unique case (forwardA_br)
+                FWD_NONE: rs1_br = rs1;
+                FWD_EXMEM: rs1_br = ex_mem_alu_result;
+                FWD_MEMWB: rs1_br = mem_wb_alu_or_mem_val;
+                default: rs1_br = 32'hDEADBEEF;
+            endcase
+            unique case (forwardB_br)
+                FWD_NONE: rs2_br = rs2;
+                FWD_EXMEM: rs2_br = ex_mem_alu_result;
+                FWD_MEMWB: rs2_br = mem_wb_alu_or_mem_val;
+                default: rs2_br = 32'hDEADBEEF;
+            endcase
+        end
     end
 
     brcmp brcmp_inst (

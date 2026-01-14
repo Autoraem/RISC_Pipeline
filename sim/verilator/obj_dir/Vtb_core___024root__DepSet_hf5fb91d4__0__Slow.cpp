@@ -145,6 +145,9 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
     vlSelfRef.tb_core__DOT__dut__DOT__forwardA = (3U 
                                                   & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U] 
                                                      >> 0x0000001aU));
+    vlSelfRef.tb_core__DOT__dut__DOT__forwardB = (3U 
+                                                  & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U] 
+                                                     >> 0x00000018U));
     if ((((vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[0U] 
            >> 1U) & (0U != (0x0000001fU & (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[0U] 
                                            >> 4U)))) 
@@ -152,6 +155,7 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
                             >> 4U)) == (0x0000001fU 
                                         & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U])))) {
         vlSelfRef.tb_core__DOT__dut__DOT__forwardA = 3U;
+        vlSelfRef.tb_core__DOT__dut__DOT__forwardB = 3U;
     } else if ((((IData)(vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q) 
                  & (0U != (0x0000001fU & (IData)((vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
                                                   >> 1U))))) 
@@ -159,27 +163,6 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
                                            >> 1U))) 
                    == (0x0000001fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U])))) {
         vlSelfRef.tb_core__DOT__dut__DOT__forwardA = 4U;
-    }
-    vlSelfRef.tb_core__DOT__dut__DOT__forwardB = (3U 
-                                                  & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U] 
-                                                     >> 0x00000018U));
-    if (((((vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[0U] 
-            >> 1U) & (0U != (0x0000001fU & (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[0U] 
-                                            >> 4U)))) 
-          & ((0x0000001fU & (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[0U] 
-                             >> 4U)) == (0x0000001fU 
-                                         & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]))) 
-         & (1U != (3U & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U] 
-                         >> 0x00000018U))))) {
-        vlSelfRef.tb_core__DOT__dut__DOT__forwardB = 3U;
-    } else if (((((IData)(vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q) 
-                  & (0U != (0x0000001fU & (IData)((vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
-                                                   >> 1U))))) 
-                 & ((0x0000001fU & (IData)((vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
-                                            >> 1U))) 
-                    == (0x0000001fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]))) 
-                & (1U != (3U & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U] 
-                                >> 0x00000018U))))) {
         vlSelfRef.tb_core__DOT__dut__DOT__forwardB = 4U;
     }
     __VdfgRegularize_he50b618e_0_0 = ((0x00007c00U 
@@ -417,93 +400,61 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
             }
         }
     }
-    vlSelfRef.tb_core__DOT__dut__DOT__stall_pc = ((
-                                                   vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[5U] 
-                                                   >> 5U) 
-                                                  & ((3U 
-                                                      == 
-                                                      (0x0000007fU 
-                                                       & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])) 
-                                                     & (((IData)(vlSelfRef.tb_core__DOT__dut__DOT__hazard_unit_inst__DOT__id_uses_rs1) 
-                                                         & (((0x0000001fU 
-                                                              & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]) 
-                                                             == 
-                                                             (0x0000001fU 
-                                                              & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                 >> 0x0000000fU))) 
-                                                            & (0U 
-                                                               != 
-                                                               (0x0000001fU 
-                                                                & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                   >> 0x0000000fU))))) 
-                                                        | (((0x00000040U 
-                                                             & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U])
-                                                             ? 
-                                                            ((1U 
-                                                              & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                 >> 5U)) 
-                                                             && ((1U 
-                                                                  & (~ 
-                                                                     (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                      >> 4U))) 
-                                                                 && ((1U 
-                                                                      & (~ 
-                                                                         (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                          >> 3U))) 
-                                                                     && ((1U 
-                                                                          & (~ 
-                                                                             (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                              >> 2U))) 
-                                                                         && ((1U 
-                                                                              & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                                >> 1U)) 
-                                                                             && (1U 
-                                                                                & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))))
-                                                             : 
-                                                            ((1U 
-                                                              & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                 >> 5U)) 
-                                                             && ((0x00000010U 
-                                                                  & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U])
-                                                                  ? 
-                                                                 ((1U 
-                                                                   & (~ 
-                                                                      (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                       >> 3U))) 
-                                                                  && ((1U 
-                                                                       & (~ 
-                                                                          (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                           >> 2U))) 
-                                                                      && ((1U 
-                                                                           & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                              >> 1U)) 
-                                                                          && (1U 
-                                                                              & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))
-                                                                  : 
-                                                                 ((1U 
-                                                                   & (~ 
-                                                                      (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                       >> 3U))) 
-                                                                  && ((1U 
-                                                                       & (~ 
-                                                                          (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                           >> 2U))) 
-                                                                      && ((1U 
-                                                                           & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                              >> 1U)) 
-                                                                          && (1U 
-                                                                              & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))))) 
-                                                           & (((0x0000001fU 
-                                                                & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]) 
-                                                               == 
-                                                               (0x0000001fU 
-                                                                & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                   >> 0x00000014U))) 
-                                                              & (0U 
-                                                                 != 
-                                                                 (0x0000001fU 
-                                                                  & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
-                                                                     >> 0x00000014U))))))));
+    vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_stall 
+        = ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[5U] 
+            >> 5U) & ((3U == (0x0000007fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])) 
+                      & (((IData)(vlSelfRef.tb_core__DOT__dut__DOT__hazard_unit_inst__DOT__id_uses_rs1) 
+                          & (((0x0000001fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]) 
+                              == (0x0000001fU & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                 >> 0x0000000fU))) 
+                             & (0U != (0x0000001fU 
+                                       & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                          >> 0x0000000fU))))) 
+                         | (((0x00000040U & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U])
+                              ? ((1U & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                        >> 5U)) && 
+                                 ((1U & (~ (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                            >> 4U))) 
+                                  && ((1U & (~ (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 3U))) 
+                                      && ((1U & (~ 
+                                                 (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                  >> 2U))) 
+                                          && ((1U & 
+                                               (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 1U)) 
+                                              && (1U 
+                                                  & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))))
+                              : ((1U & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                        >> 5U)) && 
+                                 ((0x00000010U & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U])
+                                   ? ((1U & (~ (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 3U))) 
+                                      && ((1U & (~ 
+                                                 (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                  >> 2U))) 
+                                          && ((1U & 
+                                               (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 1U)) 
+                                              && (1U 
+                                                  & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))
+                                   : ((1U & (~ (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 3U))) 
+                                      && ((1U & (~ 
+                                                 (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                  >> 2U))) 
+                                          && ((1U & 
+                                               (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                >> 1U)) 
+                                              && (1U 
+                                                  & vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U]))))))) 
+                            & (((0x0000001fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[1U]) 
+                                == (0x0000001fU & (
+                                                   vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                                   >> 0x00000014U))) 
+                               & (0U != (0x0000001fU 
+                                         & (vlSelfRef.tb_core__DOT__dut__DOT__if_id_reg_q[0U] 
+                                            >> 0x00000014U))))))));
     vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__alu_inst__DOT__A 
         = ((4U & (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA))
             ? ((2U & (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA))
@@ -617,68 +568,93 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
                                                 == vlSelfRef.tb_core__DOT__dut__DOT__E_alu_result);
     vlSelfRef.tb_core__DOT__dut__DOT__E_neg = (vlSelfRef.tb_core__DOT__dut__DOT__E_alu_result 
                                                >> 0x1fU);
-    vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1 
-        = ((0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br))
-            ? ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[4U] 
-                << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
-                                   >> 5U)) : ((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br))
-                                               ? ((
-                                                   vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[2U] 
-                                                   << 0x00000017U) 
-                                                  | (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[1U] 
-                                                     >> 9U))
-                                               : ((2U 
+    if ((0x00000020U & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[5U])) {
+        if (VL_UNLIKELY(((1U & (~ VL_ONEHOT_I((((2U 
+                                                 == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
+                                                << 2U) 
+                                               | (((1U 
+                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
+                                                   << 1U) 
+                                                  | (0U 
+                                                     == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)))))))))) {
+            if ((0U != (((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
+                         << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
+                                    << 1U) | (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)))))) {
+                if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
+                    VL_WRITEF_NX("[%0t] %%Error: execute.sv:89: Assertion failed in %Ntb_core.dut.execute_inst: unique case, but multiple matches found for '2'h%x'\n",0,
+                                 64,VL_TIME_UNITED_Q(1000),
+                                 -9,vlSymsp->name(),
+                                 2,(IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br));
+                    VL_STOP_MT("rtl/pipelinestages/execute.sv", 89, "");
+                }
+            }
+        }
+        vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+            = ((0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br))
+                ? ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[4U] 
+                    << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
+                                       >> 5U)) : ((1U 
                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br))
-                                                   ? (IData)(
-                                                             (vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
-                                                              >> 6U))
-                                                   : 0xdeadbeefU)));
-    if ((1U & (~ VL_ONEHOT_I((((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
-                               << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
-                                          << 1U) | 
-                                         (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)))))))) {
-        if ((0U != (((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
-                     << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)) 
-                                << 1U) | (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br)))))) {
-            if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
-                VL_WRITEF_NX("[%0t] %%Error: execute.sv:85: Assertion failed in %Ntb_core.dut.execute_inst: unique case, but multiple matches found for '2'h%x'\n",0,
-                             64,VL_TIME_UNITED_Q(1000),
-                             -9,vlSymsp->name(),2,(IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br));
-                VL_STOP_MT("rtl/pipelinestages/execute.sv", 85, "");
-            }
-        }
-    }
-    if ((1U & (~ VL_ONEHOT_I((((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
-                               << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
-                                          << 1U) | 
-                                         (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)))))))) {
-        if ((0U != (((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
-                     << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
-                                << 1U) | (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)))))) {
-            if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
-                VL_WRITEF_NX("[%0t] %%Error: execute.sv:91: Assertion failed in %Ntb_core.dut.execute_inst: unique case, but multiple matches found for '2'h%x'\n",0,
-                             64,VL_TIME_UNITED_Q(1000),
-                             -9,vlSymsp->name(),2,(IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br));
-                VL_STOP_MT("rtl/pipelinestages/execute.sv", 91, "");
-            }
-        }
-    }
-    vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2 
-        = ((0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br))
-            ? ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
-                << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[2U] 
-                                   >> 5U)) : ((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br))
-                                               ? ((
-                                                   vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[2U] 
-                                                   << 0x00000017U) 
-                                                  | (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[1U] 
-                                                     >> 9U))
-                                               : ((2U 
+                                                   ? 
+                                                  ((vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[2U] 
+                                                    << 0x00000017U) 
+                                                   | (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[1U] 
+                                                      >> 9U))
+                                                   : 
+                                                  ((2U 
+                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardA_br))
+                                                    ? (IData)(
+                                                              (vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
+                                                               >> 6U))
+                                                    : 0xdeadbeefU)));
+        vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br 
+            = ((0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br))
+                ? ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
+                    << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[2U] 
+                                       >> 5U)) : ((1U 
                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br))
-                                                   ? (IData)(
-                                                             (vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
-                                                              >> 6U))
-                                                   : 0xdeadbeefU)));
+                                                   ? 
+                                                  ((vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[2U] 
+                                                    << 0x00000017U) 
+                                                   | (vlSelfRef.tb_core__DOT__dut__DOT__ex_mem_reg_q[1U] 
+                                                      >> 9U))
+                                                   : 
+                                                  ((2U 
+                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br))
+                                                    ? (IData)(
+                                                              (vlSelfRef.tb_core__DOT__dut__DOT__mem_wb_reg_q 
+                                                               >> 6U))
+                                                    : 0xdeadbeefU)));
+        if (VL_UNLIKELY(((1U & (~ VL_ONEHOT_I((((2U 
+                                                 == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
+                                                << 2U) 
+                                               | (((1U 
+                                                    == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
+                                                   << 1U) 
+                                                  | (0U 
+                                                     == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)))))))))) {
+            if ((0U != (((2U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
+                         << 2U) | (((1U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)) 
+                                    << 1U) | (0U == (IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br)))))) {
+                if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
+                    VL_WRITEF_NX("[%0t] %%Error: execute.sv:95: Assertion failed in %Ntb_core.dut.execute_inst: unique case, but multiple matches found for '2'h%x'\n",0,
+                                 64,VL_TIME_UNITED_Q(1000),
+                                 -9,vlSymsp->name(),
+                                 2,(IData)(vlSelfRef.tb_core__DOT__dut__DOT__forwardB_br));
+                    VL_STOP_MT("rtl/pipelinestages/execute.sv", 95, "");
+                }
+            }
+        }
+    } else {
+        vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+            = ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[4U] 
+                << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
+                                   >> 5U));
+        vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br 
+            = ((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[3U] 
+                << 0x0000001bU) | (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[2U] 
+                                   >> 5U));
+    }
     vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_d[0U] 
         = ((((IData)(vlSelfRef.tb_core__DOT__dut__DOT__control_inst__DOT__alu_op) 
              << 0x0000001cU) | (((0x0000000cU & ((IData)(vlSelfRef.tb_core__DOT__dut__DOT__control_inst__DOT__A_sel) 
@@ -881,35 +857,22 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
                                       >> 7U) : ((0x00000080U 
                                                  & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])
                                                  ? 
-                                                (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1 
-                                                 >= vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2)
+                                                (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+                                                 >= vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br)
                                                  : 
-                                                (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1 
-                                                 < vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2)))
+                                                (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+                                                 < vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br)))
                                : ((0x00000100U & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])
                                    ? ((0x00000080U 
                                        & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])
-                                       ? VL_GTES_III(32, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2)
-                                       : VL_LTS_III(32, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2))
+                                       ? VL_GTES_III(32, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br)
+                                       : VL_LTS_III(32, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br, vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br))
                                    : ((0x00000080U 
                                        & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U])
-                                       ? (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1 
-                                          != vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2)
-                                       : (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs1 
-                                          == vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2))))));
-    if ((1U & (~ VL_ONEHOT_I((((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel) 
-                               << 1U) | (1U & (~ (IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)))))))) {
-        if ((0U != (((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel) 
-                     << 1U) | (1U & (~ (IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)))))) {
-            if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
-                VL_WRITEF_NX("[%0t] %%Error: pcreg.sv:20: Assertion failed in %Ntb_core.dut.fetch_inst.pcreg_inst: unique case, but multiple matches found for '32'h%x'\n",0,
-                             64,VL_TIME_UNITED_Q(1000),
-                             -9,vlSymsp->name(),32,
-                             (IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel));
-                VL_STOP_MT("rtl/units/pcreg.sv", 20, "");
-            }
-        }
-    }
+                                       ? (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+                                          != vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br)
+                                       : (vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs1_br 
+                                          == vlSelfRef.tb_core__DOT__dut__DOT__execute_inst__DOT__rs2_br))))));
     vlSelfRef.tb_core__DOT__dut__DOT__flush_ifid = 
         (((vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[5U] 
            >> 5U) & ((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel) 
@@ -918,8 +881,28 @@ VL_ATTR_COLD void Vtb_core___024root___stl_sequent__TOP__0(Vtb_core___024root* v
              | (0x67U == (0x0000007fU & vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[0U]))) 
             & (vlSelfRef.tb_core__DOT__dut__DOT__id_ex_reg_q[5U] 
                >> 5U)));
-    vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_next 
-        = ((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)
-            ? vlSelfRef.tb_core__DOT__dut__DOT__E_alu_result
-            : ((IData)(4U) + vlSelfRef.tb_core__DOT__dut__DOT__pc));
+    if (vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_stall) {
+        vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_next 
+            = vlSelfRef.tb_core__DOT__dut__DOT__pc;
+    } else {
+        vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_next 
+            = ((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)
+                ? vlSelfRef.tb_core__DOT__dut__DOT__E_alu_result
+                : ((IData)(4U) + vlSelfRef.tb_core__DOT__dut__DOT__pc));
+        if (VL_UNLIKELY(((1U & (~ VL_ONEHOT_I((((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel) 
+                                                << 1U) 
+                                               | (1U 
+                                                  & (~ (IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)))))))))) {
+            if ((0U != (((IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel) 
+                         << 1U) | (1U & (~ (IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel)))))) {
+                if (VL_UNLIKELY((vlSymsp->_vm_contextp__->assertOn()))) {
+                    VL_WRITEF_NX("[%0t] %%Error: pcreg.sv:22: Assertion failed in %Ntb_core.dut.fetch_inst.pcreg_inst: unique case, but multiple matches found for '32'h%x'\n",0,
+                                 64,VL_TIME_UNITED_Q(1000),
+                                 -9,vlSymsp->name(),
+                                 32,(IData)(vlSelfRef.tb_core__DOT__dut__DOT__fetch_inst__DOT__pcreg_inst__DOT__pc_sel));
+                    VL_STOP_MT("rtl/units/pcreg.sv", 22, "");
+                }
+            }
+        }
+    }
 }

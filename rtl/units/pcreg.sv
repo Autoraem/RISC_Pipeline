@@ -5,7 +5,8 @@ module pcreg (
     input logic [31:0] branch_target,
     input logic pc_sel,
     input logic pc_stall,
-    output logic [31:0] pc
+    output logic [31:0] pc,
+    output logic [31:0] pc_previous
 );
 
     logic [31:0] pc_next;
@@ -15,6 +16,7 @@ module pcreg (
     always_comb begin
         if (pc_stall) begin
             pc_next = pc; // Hold current PC if stalled
+            // Do I need to output previous pc here?
         end
         else begin
             unique case (pc_sel)
@@ -27,7 +29,11 @@ module pcreg (
 
     always_ff @(posedge clk) begin
         if (rst) pc <= 0;
-        else pc <= pc_next;
+        else begin 
+            pc_previous <= pc;
+            pc <= pc_next;
+        end
     end
     
+
 endmodule
