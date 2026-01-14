@@ -1,14 +1,14 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Tue Jan 13 23:10:26 2026
+[*] Wed Jan 14 02:02:25 2026
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Tue Jan 13 23:07:47 2026"
-[dumpfile_size] 20621
+[dumpfile_mtime] "Wed Jan 14 01:56:03 2026"
+[dumpfile_size] 20605
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 70210
+[timestart] 63920
 [size] 1920 985
-[pos] -1 -1
+[pos] -27 -24
 *-14.016232 74060 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.

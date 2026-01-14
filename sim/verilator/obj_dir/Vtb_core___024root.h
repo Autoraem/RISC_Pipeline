@@ -50,13 +50,13 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_core___024root final : public VerilatedMo
     IData/*31:0*/ tb_core__DOT__dut__DOT__execute_inst__DOT__brcmp_inst__DOT__rs2;
     IData/*31:0*/ tb_core__DOT__dut__DOT__mem_inst__DOT__dmem_inst__DOT__rdata_r;
     IData/*31:0*/ tb_core__DOT__dut__DOT__mem_inst__DOT__dmem_inst__DOT__unnamedblk1__DOT__i;
+    IData/*26:0*/ __VdfgRegularize_he50b618e_0_1;
     IData/*31:0*/ __VactIterCount;
     VlWide<3>/*64:0*/ tb_core__DOT__dut__DOT__if_id_reg_q;
-    VlWide<6>/*168:0*/ tb_core__DOT__dut__DOT__id_ex_reg_q;
-    VlWide<4>/*106:0*/ tb_core__DOT__dut__DOT__ex_mem_reg_q;
-    VlWide<4>/*104:0*/ tb_core__DOT__dut__DOT__mem_wb_reg_q;
-    VlWide<6>/*168:0*/ tb_core__DOT__dut__DOT__idex_reg__DOT__d;
-    QData/*32:0*/ __VdfgRegularize_he50b618e_0_2;
+    VlWide<6>/*165:0*/ tb_core__DOT__dut__DOT__id_ex_reg_q;
+    VlWide<3>/*73:0*/ tb_core__DOT__dut__DOT__ex_mem_reg_q;
+    QData/*38:0*/ tb_core__DOT__dut__DOT__mem_wb_reg_q;
+    VlWide<6>/*165:0*/ tb_core__DOT__dut__DOT__idex_reg__DOT__d;
     VlUnpacked<IData/*31:0*/, 1024> tb_core__DOT__dut__DOT__fetch_inst__DOT__imem_inst__DOT__mem;
     VlUnpacked<IData/*31:0*/, 32> tb_core__DOT__dut__DOT__decode_inst__DOT__regfile_inst__DOT__regfile;
     VlUnpacked<IData/*31:0*/, 4096> tb_core__DOT__dut__DOT__mem_inst__DOT__dmem_inst__DOT__mem;

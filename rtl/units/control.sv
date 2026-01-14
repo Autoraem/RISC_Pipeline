@@ -158,9 +158,9 @@ always_comb begin
         OP_JAL: begin
             regwen  = 1;
             A_sel   = SRC_A_PC;
-            B_sel   = SRC_B_FOUR;  // write PC+4 into rd
+            B_sel   = SRC_B_IMM;    // ← Use immediate for branch target!
             imm_sel = IMM_J;
-            wb_sel  = WB_FROM_PC_PLUS_4;
+            wb_sel  = WB_FROM_PC_PLUS_4;  // ← Write PC+4 (calculated separately)
             branch_type = BR_UNCOND;
         end
 

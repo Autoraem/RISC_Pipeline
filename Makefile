@@ -224,7 +224,7 @@ compile: verilate
 	@echo "✓ Compilation complete"
 
 # Run simulation
-sim: prog compile
+sim: compile
 	@echo "=========================================="
 	@echo "Running simulation: $(TOP_MODULE)"
 	@echo "=========================================="
