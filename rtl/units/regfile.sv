@@ -10,7 +10,6 @@ module regfile(
 //two read ports, one write port
 //read up on specifications
     logic [31:0] regfile [31:0];
-    assign regfile[0] = 32'b0; // x0 is always zero
     always_ff @(posedge clk) begin
         if (rst) begin
             // Initialize register file to zero on reset
@@ -23,7 +22,12 @@ module regfile(
         end
     end
     
-    assign rd1 = regfile[rs1];
-    assign rd2 = regfile[rs2];
+    // Internal forwarding: if reading same register being written, use write data
+    // Also hardwire x0 to always return 0
+    assign rd1 = (rs1 == 5'd0) ? 32'd0 : 
+                (we && rs1 == rd && rd != 5'd0) ? wd : regfile[rs1];
+                
+    assign rd2 = (rs2 == 5'd0) ? 32'd0 : 
+                (we && rs2 == rd && rd != 5'd0) ? wd : regfile[rs2];
 
 endmodule

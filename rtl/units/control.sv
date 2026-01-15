@@ -148,7 +148,7 @@ always_comb begin
                 3'b101: branch_type = BR_GE;   // BGE
                 3'b110: branch_type = BR_LTU;  // BLTU
                 3'b111: branch_type = BR_GEU;  // BGEU
-                default: branch_type = BR_NONE;
+                default: branch_type = BR_NONE; 
             endcase
         end
 
@@ -158,7 +158,7 @@ always_comb begin
         OP_JAL: begin
             regwen  = 1;
             A_sel   = SRC_A_PC;
-            B_sel   = SRC_B_FOUR;  // write PC+4 into rd
+            B_sel = SRC_B_IMM;  // Change from SRC_B_FOUR to SRC_B_IMM
             imm_sel = IMM_J;
             wb_sel  = WB_FROM_PC_PLUS_4;
             branch_type = BR_UNCOND;

@@ -22,6 +22,9 @@ module tb_core;
 
         // Init
         clk   = 0;
+        rst   = 1;
+        #20;
+        rst   = 0;
         // Run simulation for some cycles
         repeat (500) @(posedge clk);
         // Finish

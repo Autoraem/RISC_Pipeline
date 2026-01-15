@@ -1,17 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan 14 19:53:03 2026
+[*] Thu Jan 15 07:46:59 2026
 [*]
 [dumpfile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core_wave.vcd"
-[dumpfile_mtime] "Wed Jan 14 19:52:26 2026"
-[dumpfile_size] 10425
+[dumpfile_mtime] "Thu Jan 15 07:38:16 2026"
+[dumpfile_size] 11540
 [savefile] "/home/autoraem/projects/RISC_pipeline/sim/waves/tb_core.gtkw"
-[timestart] 969400
+[timestart] 155800
 [size] 1920 985
 [pos] -1 -1
-*-14.316232 1090100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.316232 851000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_core.
 [treeopen] tb_core.dut.
+[treeopen] tb_core.dut.control_inst.
 [treeopen] tb_core.dut.control_inst.control_signals.
 [treeopen] tb_core.dut.decode_inst.
 [treeopen] tb_core.dut.decode_inst.ctrl_in.
@@ -61,8 +62,10 @@ tb_core.dut.decode_inst.regfile_inst.regfile[7][31:0]
 tb_core.dut.decode_inst.regfile_inst.regfile[8][31:0]
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[9][31:0]
+@23
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[10][31:0]
+@22
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[11][31:0]
 [color] 1
@@ -103,14 +106,14 @@ tb_core.dut.decode_inst.regfile_inst.regfile[28][31:0]
 tb_core.dut.decode_inst.regfile_inst.regfile[29][31:0]
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[30][31:0]
-@23
 [color] 1
 tb_core.dut.decode_inst.regfile_inst.regfile[31][31:0]
-@22
 [color] 2
 +{tb_core.dut.decode_inst.pc[31:0] INSTR START HERE} tb_core.dut.decode_inst.pc[31:0]
 @20000
 -
+@200
+-Should be lined up with yellow above
 @100000028
 [color] 1
 tb_core.dut.decode_inst.ctrl_in.alu_op[3:0]
@@ -223,6 +226,8 @@ tb_core.dut.execute_inst.brcmp_inst.take_branch
 tb_core.dut.execute_inst.brcmp_inst.valid
 @20000
 -
+@200
+-One Delay?
 @100000028
 [color] 2
 tb_core.dut.forwardingunit_inst.ex_A_sel[2:0]
@@ -274,8 +279,42 @@ tb_core.dut.forwardingunit_inst.forwardB_br[1:0]
 @22
 tb_core.dut.execute_inst.alu_inst.A[31:0]
 tb_core.dut.execute_inst.alu_inst.B[31:0]
+@100000028
+tb_core.dut.execute_inst.alu_inst.Opcode[3:0]
+@22
+tb_core.dut.execute_inst.alu_inst.Q[31:0]
+@100000028
+tb_core.dut.forwardA[2:0]
+@22
 tb_core.dut.if_id_reg_q.pc[31:0]
-tb_core.dut.id_ex_reg_q.pc[31:0]
+@28
+tb_core.dut.execute_inst.take_branch
+[color] 2
+tb_core.dut.wb_regwen
+@24
+[color] 2
+tb_core.dut.wb_rd[4:0]
+@22
+[color] 2
+tb_core.dut.wb_data[31:0]
+[color] 2
+tb_core.dut.execute_inst.rs2_data[31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[24][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[25][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[26][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[27][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[28][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[29][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[30][31:0]
+[color] 2
+tb_core.dut.decode_inst.regfile_inst.regfile[31][31:0]
 @20000
 -
 @28

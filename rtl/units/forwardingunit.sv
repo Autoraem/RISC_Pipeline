@@ -30,18 +30,19 @@ module forwardingunit (
         forwardB_alu = ex_B_sel; // Default: no forwarding
         // --- Forwarding for rs1 (operand A) ---
         // Priority: EX/MEM -> MEM/WB
-        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs1) ) begin
+        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs1) && (ex_A_sel == SRC_A_RS1)) begin
             forwardA_alu = SRC_A_EXMEM; // take from EX/MEM (most recent)
         end
-        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs1)) begin
+        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs1) && (ex_A_sel == SRC_A_RS1)) begin
             forwardA_alu = SRC_A_MEMWB; // take from MEM/WB (older)
         end
 
         // --- Forwarding for rs2 (operand B) ---
-        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs2)) begin
+        // FIXED: Added check for SRC_B_IMM to prevent forwarding when using immediate
+        if (ex_mem_reg_write && (ex_mem_rd != 5'd0) && (ex_mem_rd == id_ex_rs2) && (ex_B_sel == SRC_B_RS2)) begin
             forwardB_alu = SRC_B_EXMEM;
         end
-        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs2)) begin
+        else if (mem_wb_reg_write && (mem_wb_rd != 5'd0) && (mem_wb_rd == id_ex_rs2) && (ex_B_sel == SRC_B_RS2)) begin
             forwardB_alu = SRC_B_MEMWB;
         end
     end

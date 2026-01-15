@@ -105,7 +105,7 @@ module riscv_core_min (
         id_ex_reg_d.mem_read    = 1'b0; // placeholder
         id_ex_reg_d.mem_write   = 1'b0; // placeholder
         id_ex_reg_d.reg_write   = ctrl.regwen;
-        id_ex_reg_d.mem_to_reg  = ctrl.wb_sel; // placeholder
+        id_ex_reg_d.wb_sel  = ctrl.wb_sel; // placeholder
         id_ex_reg_d.branch_type = ctrl.branch_type;
         id_ex_reg_d.instruction_type = ctrl.instruction_type; // for debugging
     end
@@ -132,8 +132,8 @@ module riscv_core_min (
     fwd_sel_e forwardA_br;
     fwd_sel_e forwardB_br;
     forwardingunit forwardingunit_inst (
-        .id_ex_rs1(id_ex_reg_q.rd), 
-        .id_ex_rs2(id_ex_reg_q.rd), 
+        .id_ex_rs1(id_ex_reg_q.rs1_id), 
+        .id_ex_rs2(id_ex_reg_q.rs2_id), 
         .ex_mem_rd(ex_mem_reg_q.rd),
         .ex_mem_reg_write(ex_mem_reg_q.reg_write),
         .mem_wb_rd(mem_wb_reg_q.rd),
@@ -171,7 +171,7 @@ module riscv_core_min (
         // .ex_jump(id_ex_reg_q.instruction_type == INSTRUCTION_TYPE_JUMP), 
         .ex_taken(E_take_branch),
         .ex_target(E_alu_result),
-        .ex_pc_plus_4(id_ex_reg_q.pc + 32'd4),
+        .ex_pc_plus_4(id_ex_reg_q.pc + 32'd4), 
 
         .stall_pc(stall_pc),
         .stall_ifid(stall_ifid),
@@ -189,12 +189,12 @@ module riscv_core_min (
     execute execute_inst (
         .clk(clk),
         .rst(rst),
-        .valid(id_ex_reg_q.valid), //for branch prediction
+        .valid(id_ex_reg_q.valid),
 
         .rs1_data(id_ex_reg_q.rs1),
         .rs2_data(id_ex_reg_q.rs2),
         .exmem_forwarded_data(ex_mem_reg_q.alu_result),
-        .memwb_forwarded_data(mem_wb_reg_q.alu_or_mem_val),
+        .memwb_forwarded_data(mem_wb_reg_q.wb_sel[0] ? mem_wb_reg_q.mem_data : mem_wb_reg_q.alu_result),
         .imm(id_ex_reg_q.imm),
         .alu_op(id_ex_reg_q.alu_op),
         .A_sel(forwardA), 
@@ -206,7 +206,7 @@ module riscv_core_min (
         .forwardA_br(forwardA_br),
         .forwardB_br(forwardB_br),
         .ex_mem_alu_result(ex_mem_reg_q.alu_result),
-        .mem_wb_alu_or_mem_val(mem_wb_reg_q.alu_or_mem_val),
+        .mem_wb_alu_or_mem_val(mem_wb_reg_q.wb_sel[0] ? mem_wb_reg_q.mem_data : mem_wb_reg_q.alu_result),
         .branch_type(id_ex_reg_q.branch_type),
 
         .alu_result(E_alu_result),
@@ -222,13 +222,14 @@ module riscv_core_min (
     ex_mem_t ex_mem_reg_q;
     always_comb begin
         ex_mem_reg_d.valid        = id_ex_reg_q.valid;
+        ex_mem_reg_d.pc_plus_4    = id_ex_reg_q.pc + 32'd4;  // ADD THIS LINE
         ex_mem_reg_d.alu_result   = E_alu_result;
-        ex_mem_reg_d.rs2         = E_sd;
-        ex_mem_reg_d.rd          = id_ex_reg_q.rd;
+        ex_mem_reg_d.rs2          = E_sd;
+        ex_mem_reg_d.rd           = id_ex_reg_q.rd;
         ex_mem_reg_d.mem_read     = id_ex_reg_q.mem_read;
         ex_mem_reg_d.mem_write    = id_ex_reg_q.mem_write;
         ex_mem_reg_d.reg_write    = id_ex_reg_q.reg_write;
-        ex_mem_reg_d.mem_to_reg   = id_ex_reg_q.mem_to_reg;
+        ex_mem_reg_d.wb_sel       = id_ex_reg_q.wb_sel;
     end
     
     pipereg #(
@@ -266,12 +267,13 @@ module riscv_core_min (
     mem_wb_t mem_wb_reg_d;
     mem_wb_t mem_wb_reg_q;
     always_comb begin
-        mem_wb_reg_d.valid          = ex_mem_reg_q.valid;
-        mem_wb_reg_d.alu_or_mem_val = ex_mem_reg_q.mem_to_reg
-                                        ? M_mem_rdata
-                                        : ex_mem_reg_q.alu_result;
-        mem_wb_reg_d.rd             = ex_mem_reg_q.rd;
-        mem_wb_reg_d.reg_write      = ex_mem_reg_q.reg_write;
+        mem_wb_reg_d.valid        = ex_mem_reg_q.valid;
+        mem_wb_reg_d.pc_plus_4    = ex_mem_reg_q.pc_plus_4;  
+        mem_wb_reg_d.alu_result   = ex_mem_reg_q.alu_result; 
+        mem_wb_reg_d.mem_data     = M_mem_rdata;              
+        mem_wb_reg_d.rd           = ex_mem_reg_q.rd;
+        mem_wb_reg_d.reg_write    = ex_mem_reg_q.reg_write;
+        mem_wb_reg_d.wb_sel       = ex_mem_reg_q.wb_sel;
     end
     
     pipereg #(
@@ -296,10 +298,10 @@ module riscv_core_min (
     logic        wb_regwen;
     
     wb writeback_inst (
-        .mem_data(mem_wb_reg_q.alu_or_mem_val),
-        .alu_result(mem_wb_reg_q.alu_or_mem_val),
-        .pc_plus_4(mem_wb_reg_q.alu_or_mem_val + 32'd4), // Placeholder for PC+4
-        .wb_sel(mem_wb_reg_q.alu_or_mem_val ? WB_FROM_MEM : WB_FROM_ALU), // Placeholder for WB select
+        .mem_data(mem_wb_reg_q.mem_data),     // CHANGED
+        .alu_result(mem_wb_reg_q.alu_result), // CHANGED
+        .pc_plus_4(mem_wb_reg_q.pc_plus_4),   // CHANGED
+        .wb_sel(mem_wb_reg_q.wb_sel),         // CHANGED
         .rd_in(mem_wb_reg_q.rd),
         .regwrite_in(mem_wb_reg_q.reg_write),
 
